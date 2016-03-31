@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'bootstrap-sprockets';
+@import 'bootswatch/superhero/variables';
+@import 'bootstrap';
+body { padding-top: 20px; }
+@import 'bootswatch/superhero/bootswatch';
+
+@import 'font-awesome';
+
+.line-divider {
+  margin-top: 40px;
+  border-top: 1px solid #4E5D6C;
+}
+
+.btn {
+  border-radius: 7px;
+}
