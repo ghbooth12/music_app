@@ -22,11 +22,26 @@ body { padding-top: 20px; }
 
 @import 'font-awesome';
 
+// Override bootstrap
+.btn {
+  border-radius: 7px;
+}
+.dropdown-menu .divider {
+  background-color: #4E5D6C;
+}
+
+// Custom Style
 .line-divider {
   margin-top: 40px;
   border-top: 1px solid #4E5D6C;
 }
 
-.btn {
-  border-radius: 7px;
+.space-top {
+  margin-top: 30px;
+}
+
+
+// Global Style
+footer {
+  margin: 50px auto;
 }
