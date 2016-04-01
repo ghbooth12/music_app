@@ -23,29 +23,20 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse-div">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li><%= link_to 'Premium', '#' %></li>
           </ul> <!-- /.navbar-nav -->
 
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Username Here <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to 'My Music Box', '#' %></li>
-                  <li><%= link_to 'Edit SignIn Info', edit_user_registration_path %></li>
+                  <li><%= link_to 'Saved Music', '#' %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><%= link_to 'My Songs', '#' %></li>
+                  <li><%= link_to 'My Musician Profile', '#' %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><%= link_to 'Login Settings', edit_user_registration_path %></li>
                   <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
                 </ul>
               </li> <!-- /.dropdown -->
@@ -78,5 +69,11 @@
     </div> <!-- /.flash -->
     <%= yield %>
   </div> <!-- /.container -->
+
+  <footer>
+		<div class="text-center">
+      <small>Dynamic Music Application &copy; 2016, All Rights Reserved</small>
+    </div>
+	</footer>
 </body>
 </html>
