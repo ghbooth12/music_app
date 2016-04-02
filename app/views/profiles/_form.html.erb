@@ -1,0 +1,54 @@
+<h3>Social Media</h3>
+<%= form_for [current_user, @profile] do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h4>
+      <ul>
+        <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :facebook_url, class: 'sr-only' %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+      <%= f.text_field :facebook_url, class: 'form-control', placeholder: 'http://www.facebook.com/my_profile' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :twitter_url, class: 'sr-only' %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+      <%= f.text_field :twitter_url, class: 'form-control', placeholder: 'http://twitter.com/my_profile' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :youtube_url, class: 'sr-only' %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-youtube-play"></i></span>
+      <%= f.text_field :youtube_url, class: 'form-control', placeholder: 'http://www.youtube.com/my_profile' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :soundcloud_url, class: 'sr-only' %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-soundcloud"></i></span>
+      <%= f.text_field :soundcloud_url, class: 'form-control', placeholder: 'http://www.soundcloud.com/my_profile' %>
+    </div>
+  </div>
+
+  <h3 class="space-top">Bio</h3>
+  <div class="form-group">
+    <%= f.label :body, class: 'sr-only' %>
+    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: 'Enter your BIO' %>
+  </div>
+
+  <div class="pull-right">
+    <%= button_tag class: 'btn btn-success' do %>
+      <span class="glyphicon glyphicon-ok"></span> Save
+    <% end %>
+  </div>
+<% end %>

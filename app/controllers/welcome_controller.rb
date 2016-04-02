@@ -3,4 +3,8 @@ class WelcomeController < ApplicationController
 
   def index
   end
+
+  def songs_list
+    @profiles = Profile.all
+  end
 end

@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401030123) do
+ActiveRecord::Schema.define(version: 20160401223138) do
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "facebook_url"
+    t.string   "twitter_url"
+    t.string   "youtube_url"
+    t.string   "soundcloud_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.text     "body"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
