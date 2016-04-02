@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  has_many :profiles, dependent: :destroy
+
   validates :username, length: { minimum: 3, maximum: 30 }, presence: true
 
   enum role: [:standard, :premium, :admin]

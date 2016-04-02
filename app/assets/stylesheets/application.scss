@@ -27,7 +27,17 @@ body { padding-top: 20px; }
   border-radius: 7px;
 }
 .dropdown-menu .divider {
-  background-color: #4E5D6C;
+  background-color: #465463;
+}
+.list-group-item {
+  background-color: transparent;
+}
+.list-group-item.active {
+  color: #DF691A;
+  background-color: transparent;
+}
+.navbar {
+  font-size: 16px;
 }
 
 // Custom Style
@@ -37,11 +47,23 @@ body { padding-top: 20px; }
 }
 
 .space-top {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 
 // Global Style
 footer {
   margin: 50px auto;
+}
+
+#user-profile {
+  .list-group {
+    margin-top: 50px;
+  }
+}
+
+.social-btn {
+  i {
+    padding-left: 10px;
+  }
 }

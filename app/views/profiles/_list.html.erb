@@ -1,0 +1,23 @@
+<% unless @profile.facebook_url.blank? %>
+  <%= link_to @profile.facebook_url, target: '_blank' do %>
+    <i class="fa fa-facebook"></i>
+  <% end %>
+<% end %>
+
+<% unless @profile.twitter_url.blank? %>
+  <%= link_to @profile.twitter_url, target: '_blank' do %>
+    <i class="fa fa-twitter"></i>
+  <% end %>
+<% end %>
+
+<% unless @profile.youtube_url.blank? %>
+  <%= link_to @profile.youtube_url, target: '_blank' do %>
+    <i class="fa fa-youtube-play"></i>
+  <% end %>
+<% end %>
+
+<% unless @profile.soundcloud_url.blank? %>
+  <%= link_to @profile.soundcloud_url, target: '_blank' do %>
+    <i class="fa fa-soundcloud"></i>
+  <% end %>
+<% end %>

@@ -24,6 +24,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-div">
           <ul class="nav navbar-nav">
             <li><%= link_to 'Premium', '#' %></li>
+            <li><%= link_to 'List of Songs', songs_list_path %></li>
           </ul> <!-- /.navbar-nav -->
 
           <ul class="nav navbar-nav navbar-right">
@@ -34,7 +35,11 @@
                   <li><%= link_to 'Saved Music', '#' %></li>
                   <li role="separator" class="divider"></li>
                   <li><%= link_to 'My Songs', '#' %></li>
-                  <li><%= link_to 'My Musician Profile', '#' %></li>
+                  <% if current_user.profiles.first && current_user.profiles.first.id %>
+                    <li><%= link_to 'My Musician Profile', edit_user_profile_path(current_user, current_user.profiles.first) %></li>
+                  <% else %>
+                    <li><%= link_to 'New Musician Profile', new_user_profile_path(current_user) %></li>
+                  <% end %>
                   <li role="separator" class="divider"></li>
                   <li><%= link_to 'Login Settings', edit_user_registration_path %></li>
                   <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
