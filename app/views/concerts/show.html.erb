@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="row alert alert-info">
+    <div class="col-md-6">
+      <h3><%= @concert.show_date %>, <%= @concert.show_time.strftime("%l:%M %P") %></h3>
+    </div>
+    <div class="col-md-6">
+      <h3>Show Title <small>by</small> <%= @concert.user.username %></h3>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <h3>
+      Location Name
+      <% if url = @concert.location_url %>
+        <small><%= link_to "more", url, target: '_blank' %></small>
+      <% end %>
+    </h3>
+    <ul class="list-style-none">
+      <li><%= @concert.address_1 %></li>
+      <li><%= @concert.address_2 %></li>
+      <li><%= @concert.city %> <%= @concert.state %> <%= @concert.zipcode %></li>
+      <li><%= @concert.phone_number %></li>
+    </ul>
+    <hr>
+    <p><%= @concert.body %></p>
+  </div>
+  <div class="col-md-7">
+
+  </div>
+</div>
+<%= link_to 'Back', [@concert.user, @concert.user.profiles.first], class: 'btn btn-default' %>
+
+<div class="pull-right">
+  <% if current_user && current_user == @concert.user %>
+    <%= link_to 'Edit', edit_user_concert_path(@concert.user, @concert), class: 'btn btn-primary' %>
+  <% end %>
+</div>

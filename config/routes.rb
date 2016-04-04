@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [] do
     resources :profiles, except: [:index, :destroy]
+    resources :concerts
   end
 
   devise_for :users

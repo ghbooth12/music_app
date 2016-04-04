@@ -8,6 +8,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="flash">
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+    <% elsif flash.now[:alert] %>
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash.now[:alert] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-warning">
+        <button type='button' class='close' data-dismiss='alert'>&times;</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  </div> <!-- /.flash -->
+
   <div class="container">
     <nav class="navbar navbar-reverse">
       <div class="container-fluid">
@@ -35,8 +54,9 @@
                   <li><%= link_to 'Saved Music', '#' %></li>
                   <li role="separator" class="divider"></li>
                   <li><%= link_to 'My Songs', '#' %></li>
-                  <% if current_user.profiles.first && current_user.profiles.first.id %>
-                    <li><%= link_to 'My Musician Profile', edit_user_profile_path(current_user, current_user.profiles.first) %></li>
+                  <% profile = current_user.profiles.first %>
+                  <% if profile && profile.id %>
+                    <li><%= link_to 'My Musician Profile', edit_user_profile_path(current_user, profile) %></li>
                   <% else %>
                     <li><%= link_to 'New Musician Profile', new_user_profile_path(current_user) %></li>
                   <% end %>
@@ -54,24 +74,6 @@
       </div> <!-- /.container-fluid -->
     </nav>
 
-    <div class="flash">
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
-        </div>
-      <% elsif flash.now[:alert] %>
-        <div class="alert alert-danger">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash.now[:alert] %>
-        </div>
-      <% elsif flash[:alert] %>
-        <div class="alert alert-warning">
-          <button type='button' class='close' data-dismiss='alert'>&times;</button>
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-    </div> <!-- /.flash -->
     <%= yield %>
   </div> <!-- /.container -->
 

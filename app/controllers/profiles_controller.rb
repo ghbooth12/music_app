@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :set_profile, only: [:update]
+  before_action :set_profile, only: [:edit, :update]
 
   def new
     @profile = Profile.new
@@ -18,9 +18,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    unless @profile = current_user.profiles.find(params[:id])
-      render :new
-    end
   end
 
   def update

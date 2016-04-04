@@ -17,7 +17,6 @@
 @import 'bootstrap-sprockets';
 @import 'bootswatch/superhero/variables';
 @import 'bootstrap';
-body { padding-top: 20px; }
 @import 'bootswatch/superhero/bootswatch';
 
 @import 'font-awesome';
@@ -39,29 +38,35 @@ body { padding-top: 20px; }
 .navbar {
   font-size: 16px;
 }
+body > .container {
+  margin-top: 20px;
+}
+h1, h2, h3 {
+    margin-top: 10.5px;
+    margin-bottom: 10.5px;
+}
 
 // Custom Style
 .line-divider {
   margin-top: 40px;
   border-top: 1px solid #4E5D6C;
 }
-
 .space-top {
   margin-top: 50px;
 }
-
+.list-style-none {
+  list-style: none;
+}
 
 // Global Style
 footer {
   margin: 50px auto;
 }
-
 #user-profile {
   .list-group {
     margin-top: 50px;
   }
 }
-
 .social-btn {
   i {
     padding-left: 10px;

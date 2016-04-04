@@ -19,10 +19,12 @@
 
       <div class="space-top"></div>
 
-      <h3>Concert</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <h3>Upcoming Concerts</h3>
+      <% if @profile.user.concerts.any? %>
+        <%= render partial: 'concerts/list', locals: { concerts: @profile.user.concerts } %>
+      <% else %>
+        <p>No upcoming concerts...</p>
+      <% end %>
 
       <% if current_user && current_user == @profile.user %>
         <div class="space-top pull-right">

@@ -1,0 +1,5 @@
+<ul>
+  <% Profile.all.each do |profile| %>
+    <li><%= profile.user.username %></li>
+  <% end %>
+</ul>
