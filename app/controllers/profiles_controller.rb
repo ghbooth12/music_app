@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
+  before_action :authorize_user_for_modify, only: [:edit, :update]
   before_action :set_profile, only: [:edit, :update]
+  before_action :authorize_user_for_create, only: [:new, :create]
 
   def new
     @profile = Profile.new
@@ -41,5 +43,21 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:facebook_url, :twitter_url, :youtube_url, :soundcloud_url, :body)
+  end
+
+  def authorize_user_for_modify
+    profile = Profile.find(params[:id])
+    unless current_user == profile.user
+      flash[:alert] = "You must be an admin or an owner of this profile page to do that."
+      redirect_to [profile.user, profile]
+    end
+  end
+
+  def authorize_user_for_create
+    user = User.find(params[:user_id])
+    unless current_user == user
+      flash[:alert] = "You can do that on your profile page."
+      redirect_to [user, user.profiles.first]
+    end
   end
 end

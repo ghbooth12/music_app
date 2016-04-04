@@ -1,8 +1,10 @@
 class Concert < ActiveRecord::Base
   belongs_to :user
 
+  validates :title, presence: true, length: { in: 3..30 }
   validates :show_date, presence: true
   validates :show_time, presence: true
+  validates :location_name, presence: true, length: { in: 3..30 }
   validates :address_1, presence: true
   validates :city, presence: true, length: { in: 3..30 }
   validates :state, presence: true

@@ -28,6 +28,9 @@
 .dropdown-menu .divider {
   background-color: #465463;
 }
+.dropdown-menu > li > a {
+  font-size: 13px;
+}
 .list-group-item {
   background-color: transparent;
 }
@@ -44,6 +47,23 @@ body > .container {
 h1, h2, h3 {
     margin-top: 10.5px;
     margin-bottom: 10.5px;
+}
+table, .table {
+  font-size: 15px;
+}
+body {
+  font-size: 16px;
+}
+a, table a:not(.btn), .table a:not(.btn) {
+  text-decoration: none;
+  color: #DF691A;
+}
+a:hover, a:focus, table a:not(.btn):hover, .table a:not(.btn):focus {
+  text-decoration: none;
+  color: #FF6600;
+}
+.table .fa-trash-o {
+  margin-left: 10px;
 }
 
 // Custom Style

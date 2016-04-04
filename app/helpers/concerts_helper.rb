@@ -1,7 +1,7 @@
 module ConcertsHelper
   def us_states
     [
-      ['Choose your state', ' '],
+      ['Choose state', ' '],
       ['Alabama', 'AL'],
       ['Alaska', 'AK'],
       ['Arizona', 'AZ'],
@@ -57,5 +57,11 @@ module ConcertsHelper
     ]
   end
 
+  def phone_number_format(phone_number)
+    number_to_phone(phone_number, area_code: true)
+  end
 
+  def user_is_authrized?(user, profile)
+    user && (user == profile.user || user.admin?)
+  end
 end

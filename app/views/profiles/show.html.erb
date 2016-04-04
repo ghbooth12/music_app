@@ -11,24 +11,30 @@
         </h2>
         <p>Jazz Pop Classic</p>
       </div>
-    </div>
+    </div> <!-- /.row -->
 
     <div class="row">
       <h3>About</h3>
       <p><%= @profile.body %></p>
+      <% if current_user && current_user == @profile.user %>
+        <div class="space-top pull-right">
+          <%= link_to 'Edit Public Profile', edit_user_profile_path(@profile.user, @profile), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div> <!-- /.row -->
+    <div class="space-top"></div>
 
-      <div class="space-top"></div>
-
+    <div class="row">
       <h3>Upcoming Concerts</h3>
       <% if @profile.user.concerts.any? %>
-        <%= render partial: 'concerts/list', locals: { concerts: @profile.user.concerts } %>
+        <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts } %>
       <% else %>
         <p>No upcoming concerts...</p>
       <% end %>
 
       <% if current_user && current_user == @profile.user %>
         <div class="space-top pull-right">
-          <%= link_to 'Edit Public Profile', edit_user_profile_path(@profile.user, @profile), class: 'btn btn-primary' %>
+          <%= link_to 'Add new concert', new_user_concert_path(current_user), class: 'btn btn-success' %>
         </div>
       <% end %>
     </div> <!-- /.row -->
