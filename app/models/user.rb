@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :profiles, dependent: :destroy
+  has_many :concerts, dependent: :destroy
 
   validates :username, length: { minimum: 3, maximum: 30 }, presence: true
 

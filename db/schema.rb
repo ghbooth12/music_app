@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401223138) do
+ActiveRecord::Schema.define(version: 20160402044219) do
+
+  create_table "concerts", force: :cascade do |t|
+    t.date     "show_date"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "phone_number"
+    t.string   "location_url"
+    t.text     "body"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.time     "show_time"
+  end
+
+  add_index "concerts", ["user_id"], name: "index_concerts_on_user_id"
 
   create_table "profiles", force: :cascade do |t|
     t.string   "facebook_url"

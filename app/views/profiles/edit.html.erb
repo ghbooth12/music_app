@@ -1,5 +1,5 @@
 <div class="row" id="user-profile">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="list-group">
       <%= link_to 'Saved Music', '#', class: "list-group-item" %>
       <%= link_to 'My Songs', '#', class: "list-group-item" %>
@@ -26,5 +26,12 @@
     <div class="row">
       <%= render 'form' %>
     </div>
-  </div> <!-- /.col-md-7 -->
+
+    <div class="row">
+      <h3>Concerts Schedule</h3>
+      <%= render partial: 'concerts/list', locals: { concerts: current_user.concerts } %>
+
+      <%= link_to 'Add new concert', new_user_concert_path(current_user), class: 'btn btn-success' %>
+    </div>
+  </div> <!-- /.col-md-8 -->
 </div>

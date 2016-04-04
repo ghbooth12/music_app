@@ -1,0 +1,19 @@
+<table class="table table-bordered">
+  <tr>
+    <th>When</th>
+    <th>Title</th>
+    <th>Location (city/state)</th>
+    <th>Select</th>
+  </tr>
+
+  <% concerts.each do |concert| %>
+    <tr>
+      <td><%= concert.show_date %>, <%= concert.show_time.strftime("%l:%M %P") %></td>
+      <td>
+        <%= link_to "Location Name", [concert.user, concert]  %>
+      </td>
+      <td>Somewhere <small>(<%= concert.city %> <%= concert.state %></small>)</td>
+      <td>check</td>
+    </tr>
+  <% end %>
+</table>
