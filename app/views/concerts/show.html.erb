@@ -4,21 +4,21 @@
       <h3><%= @concert.show_date %>, <%= @concert.show_time.strftime("%l:%M %P") %></h3>
     </div>
     <div class="col-md-6">
-      <h3>Show Title <small>by</small> <%= @concert.user.username %></h3>
+      <h3><%= @concert.title %> <small>by</small> <%= @concert.user.username %></h3>
     </div>
   </div>
   <div class="col-md-5">
-    <h3>
-      Location Name
+    <h4>
+      <%= @concert.location_name %>
       <% if url = @concert.location_url %>
         <small><%= link_to "more", url, target: '_blank' %></small>
       <% end %>
-    </h3>
+    </h4>
     <ul class="list-style-none">
       <li><%= @concert.address_1 %></li>
       <li><%= @concert.address_2 %></li>
       <li><%= @concert.city %> <%= @concert.state %> <%= @concert.zipcode %></li>
-      <li><%= @concert.phone_number %></li>
+      <li><%= phone_number_format(@concert.phone_number) %></li>
     </ul>
     <hr>
     <p><%= @concert.body %></p>
@@ -27,10 +27,12 @@
 
   </div>
 </div>
+
 <%= link_to 'Back', [@concert.user, @concert.user.profiles.first], class: 'btn btn-default' %>
 
 <div class="pull-right">
   <% if current_user && current_user == @concert.user %>
-    <%= link_to 'Edit', edit_user_concert_path(@concert.user, @concert), class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_user_concert_path(@concert.user, @concert), class: 'btn btn-success' %>
+    <%= link_to 'Delete', [@concert.user, @concert], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure to delete this concert information?' } %>
   <% end %>
 </div>

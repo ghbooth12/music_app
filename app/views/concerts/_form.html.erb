@@ -10,6 +10,11 @@
     </div>
   <% end %>
 
+  <h4>Concert</h4>
+  <div class="form-group">
+    <%= f.label :title, "Concert Title *" %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
@@ -25,6 +30,11 @@
     </div>
   </div>
 
+  <h4>Venue</h4>
+  <div class="form-group">
+    <%= f.label :location_name, "Name of Venue *" %>
+    <%= f.text_field :location_name, class: 'form-control', placeholder: 'eg) Concert hall name, restaurant name, bar name, etc' %>
+  </div>
   <div class="form-group">
     <%= f.label :address_1, "Address 1 *" %>
     <%= f.text_field :address_1, class: 'form-control' %>
@@ -53,7 +63,7 @@
         <%= f.text_field :zipcode, class: 'form-control' %>
       </div>
     </div>
-  </div>
+  </div> <!-- /.row -->
 
   <div class="row">
     <div class="col-md-6">
@@ -65,10 +75,10 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= f.label :location_url, "Location URL" %>
-        <%= f.url_field :location_url, class: 'form-control' %>
+        <%= f.url_field :location_url, class: 'form-control', placeholder: "http://www.example.com" %>
       </div>
     </div>
-  </div>
+  </div> <!-- /.row -->
 
   <div class="form-group">
     <%= f.label :body, "About Concert" %>

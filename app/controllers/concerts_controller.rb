@@ -1,9 +1,8 @@
 class ConcertsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
+  before_action :authorize_user_for_modify, only: [:edit, :update, :destroy]
   before_action :set_concert, only: [:edit, :update, :destroy]
-
-  def index
-    @concerts = Concert.all
-  end
+  before_action :authorize_user_for_create, only: [:new, :create]
 
   def new
     @concert = Concert.new
@@ -14,11 +13,7 @@ class ConcertsController < ApplicationController
 
     if @concert.save
       flash[:notice] = "Concert was successfully created."
-      if profile = current_user.profiles.first
-        redirect_to edit_user_profile_path(current_user, profile)
-      else
-        redirect_to new_user_profile_path(current_user)
-      end
+      redirect_to [current_user, @concert]
     else
       render :new
     end
@@ -30,11 +25,7 @@ class ConcertsController < ApplicationController
   def update
     if @concert.update_attributes(concert_params)
       flash[:notice] = "Concert was successfully updated."
-      if profile = current_user.profiles.first
-        redirect_to edit_user_profile_path(current_user, profile)
-      else
-        redirect_to new_user_profile_path(current_user)
-      end
+      redirect_to [current_user, @concert]
     else
       render :edit
     end
@@ -47,10 +38,10 @@ class ConcertsController < ApplicationController
   def destroy
     if @concert.destroy
       flash[:notice] = "Concert was successfully deleted."
-      render :index
+      redirect_to [current_user, current_user.profiles.first]
     else
       flash.now[:alert] = "There was an error updating the concert."
-      render :index
+      redirect_to [current_user, current_user.profiles.first]
     end
   end
 
@@ -61,6 +52,22 @@ class ConcertsController < ApplicationController
   end
 
   def concert_params
-    params.require(:concert).permit(:show_date, :show_time, :address_1, :address_2, :city, :state, :zipcode, :phone_number, :location_url, :body)
+    params.require(:concert).permit(:title, :show_date, :show_time, :location_name, :address_1, :address_2, :city, :state, :zipcode, :phone_number, :location_url, :body)
+  end
+
+  def authorize_user_for_modify
+    concert = Concert.find(params[:id])
+    unless current_user == concert.user
+      flash[:alert] = "You must be an admin or an author of this concert article to do that."
+      redirect_to [concert.user, concert]
+    end
+  end
+
+  def authorize_user_for_create
+    user = User.find(params[:user_id])
+    unless current_user == user
+      flash[:alert] = "You can create your concert artile on your profile page."
+      redirect_to [user, user.profiles.first]
+    end
   end
 end
