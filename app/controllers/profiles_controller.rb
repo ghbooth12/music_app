@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :authorize_user_for_modify, only: [:edit, :update]
   before_action :set_profile, only: [:edit, :update]
-  before_action :authorize_user_for_create, only: [:new, :create]
+  before_action :authorize_user_for_create, only: [:new, :create, :remove_avatar]
 
   def new
     @profile = Profile.new
@@ -35,6 +35,16 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def remove_avatar
+    profile = current_user.profiles.first
+    profile.remove_avatar!
+    if profile.save
+      redirect_to [current_user, profile]
+    else
+      render :show
+    end
+  end
+
   private
 
   def set_profile
@@ -42,7 +52,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:facebook_url, :twitter_url, :youtube_url, :soundcloud_url, :body)
+    params.require(:profile).permit(:avatar, :facebook_url, :twitter_url, :youtube_url, :soundcloud_url, :body)
   end
 
   def authorize_user_for_modify

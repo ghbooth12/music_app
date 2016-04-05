@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404011809) do
+ActiveRecord::Schema.define(version: 20160404182411) do
 
   create_table "concerts", force: :cascade do |t|
     t.date     "show_date"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160404011809) do
     t.datetime "updated_at",     null: false
     t.integer  "user_id"
     t.text     "body"
+    t.string   "avatar"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160404011809) do
     t.datetime "updated_at",                          null: false
     t.string   "username"
     t.integer  "role"
+    t.string   "avatar"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

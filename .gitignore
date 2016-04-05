@@ -20,3 +20,8 @@
 /config/application.yml
 
 .DS_Store
+
+/config/secrets.yml
+
+# CarrierWave image
+public/uploads

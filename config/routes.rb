@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :profiles, except: [:index, :destroy]
     resources :concerts, except: :index
+
+    delete 'profiles/remove_avatar' => 'profiles#remove_avatar', as: :remove_avatar
   end
 
   devise_for :users

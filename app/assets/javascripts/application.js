@@ -15,3 +15,20 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+  var preview = $(".upload-preview img");
+
+  $("#img-file").change(function(event){
+    var input = $(event.currentTarget);
+    var file = input[0].files[0];
+    var reader = new FileReader();
+    reader.onload = function(e){
+      image_base64 = e.target.result;
+      preview.attr("src", image_base64);
+      size = "width: 70px; height: 70px;"
+      preview.attr("style", size)
+    };
+    reader.readAsDataURL(file);
+  });
+});
