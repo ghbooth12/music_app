@@ -4,8 +4,10 @@ class WelcomeController < ApplicationController
   def index
     if params[:search] && params[:miles]
       @concerts = Concert.near(params[:search], params[:miles])
-    else
-      @concerts = Concert.all
+      @hash = Gmaps4rails.build_markers(@concerts) do |concert, marker|
+        marker.lat concert.latitude
+        marker.lng concert.longitude
+      end
     end
   end
 
