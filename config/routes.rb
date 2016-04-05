@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'songs_list' => 'welcome#songs_list', as: :songs_list
+  get 'song_list' => 'welcome#song_list', as: :song_list
 
   resources :users, only: [] do
     resources :profiles, except: [:index, :destroy]
