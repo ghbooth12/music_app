@@ -33,6 +33,10 @@ class ConcertsController < ApplicationController
 
   def show
     @concert = Concert.find(params[:id])
+    @hash = Gmaps4rails.build_markers([@concert]) do |concert, marker|
+      marker.lat concert.latitude
+      marker.lng concert.longitude
+    end
   end
 
   def destroy

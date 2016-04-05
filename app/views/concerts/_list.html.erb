@@ -3,7 +3,6 @@
     <th>When</th>
     <th>Title</th>
     <th>Location (City State)</th>
-    <th>Geolocation</th>
     <% if user_is_authrized?(current_user, profile) %>
       <th>Manage</th>
     <% end %>
@@ -16,7 +15,6 @@
         <%= link_to concert.title, [concert.user, concert]  %>
       </td>
       <td><%= concert.location_name %> <small>(<%= concert.city %> <%= concert.state %></small>)</td>
-      <td><%= concert.latitude %>, <%= concert.longitude %></td>
       <% if user_is_authrized?(current_user, profile) %>
         <td>
           <%= link_to edit_user_concert_path(concert.user, concert) do %>
