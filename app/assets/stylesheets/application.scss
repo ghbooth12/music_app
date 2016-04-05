@@ -77,6 +77,10 @@ a:hover, a:focus, table a:not(.btn):hover, .table a:not(.btn):focus {
 .list-style-none {
   list-style: none;
 }
+.margin-left-sm {
+  margin-left: 10px;
+}
+
 
 // Global Style
 footer {
@@ -90,5 +94,11 @@ footer {
 .social-btn {
   i {
     padding-left: 10px;
+  }
+}
+.nav {
+  #photo {
+    display: inline-block;
+    float: left;
   }
 }

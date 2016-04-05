@@ -48,15 +48,15 @@
 
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
+              <%= image_tag(user_profile.avatar.sm.url, id: 'photo') if user_profile.avatar? %>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to 'Saved Music', '#' %></li>
                   <li role="separator" class="divider"></li>
                   <li><%= link_to 'My Songs', '#' %></li>
-                  <% profile = current_user.profiles.first %>
-                  <% if profile && profile.id %>
-                    <li><%= link_to 'My Musician Profile', edit_user_profile_path(current_user, profile) %></li>
+                  <% if user_profile && user_profile.id %>
+                    <li><%= link_to 'My Musician Profile', edit_user_profile_path(current_user, user_profile) %></li>
                   <% else %>
                     <li><%= link_to 'New Musician Profile', new_user_profile_path(current_user) %></li>
                   <% end %>

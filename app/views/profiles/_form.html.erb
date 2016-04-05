@@ -1,4 +1,3 @@
-<h3>Social Media</h3>
 <%= form_for [current_user, @profile] do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
@@ -11,6 +10,22 @@
     </div>
   <% end %>
 
+  <h3>Profile Photo</h3>
+  <% if @profile.avatar? %>
+    <%= image_tag(@profile.avatar.md.url) %>
+    <%= link_to "Remove Current Photo", user_remove_avatar_path(current_user), method: :delete %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :avatar, class: 'sr-only' %>
+    <%= f.file_field :avatar, class: 'form-control', id: 'img-file' %>
+    <%= f.hidden_field :avatar_cache %>
+  </div>
+  <div class="upload-preview">
+    <img />
+  </div>
+
+  <h3 class="space-top">Social Media</h3>
   <div class="form-group">
     <%= f.label :facebook_url, class: 'sr-only' %>
     <div class="input-group">
