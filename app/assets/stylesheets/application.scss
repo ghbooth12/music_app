@@ -22,6 +22,9 @@
 @import 'font-awesome';
 
 // Override bootstrap
+.icon-bar {
+  background-color: #DF691A;
+}
 .btn {
   border-radius: 7px;
 }
