@@ -7,6 +7,7 @@ class WelcomeController < ApplicationController
       @hash = Gmaps4rails.build_markers(@concerts) do |concert, marker|
         marker.lat concert.latitude
         marker.lng concert.longitude
+        marker.infowindow concert.title
       end
     end
   end
