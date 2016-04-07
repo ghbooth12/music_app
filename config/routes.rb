@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tags, only: :show
   resources :genres
 
   get 'song_list' => 'welcome#song_list', as: :song_list

@@ -12,6 +12,7 @@ class ConcertsController < ApplicationController
     @concert = current_user.concerts.build(concert_params)
 
     if @concert.save
+      @concert.tags = Tag.make_tags(params[:concert][:tags])
       flash[:notice] = "Concert was successfully created."
       redirect_to [current_user, @concert]
     else
@@ -24,6 +25,7 @@ class ConcertsController < ApplicationController
 
   def update
     if @concert.update_attributes(concert_params)
+      @concert.tags = Tag.make_tags(params[:concert][:tags])
       flash[:notice] = "Concert was successfully updated."
       redirect_to [current_user, @concert]
     else

@@ -85,6 +85,8 @@
     <%= f.text_area :body, rows: 4, class: 'form-control' %>
   </div>
 
+  <%= render partial: 'tags/form', locals: { f: f, tags: @concert.tags } %>
+
   <div class="pull-right">
     <%= button_tag class: 'btn btn-success' do %>
       <span class="glyphicon glyphicon-ok"></span> Save

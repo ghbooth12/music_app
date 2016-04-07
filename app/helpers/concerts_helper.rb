@@ -61,7 +61,7 @@ module ConcertsHelper
     number_to_phone(phone_number, area_code: true)
   end
 
-  def user_is_authrized?(user, profile)
-    user && (user == profile.user || user.admin?)
+  def user_is_authorized?(user, concert)
+    user && (user == concert.user || user.admin?)
   end
 end

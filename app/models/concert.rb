@@ -1,6 +1,8 @@
 class Concert < ActiveRecord::Base
   belongs_to :user
-
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
+  
   before_save { self.city = city.capitalize }
 
   geocoded_by :full_address

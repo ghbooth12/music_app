@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="page-header">
+      <h2 class="text-center"><%= @tag.name %></h2>
+    </div>
+    <table class="table">
+      <tr>
+        <th>Song</th>
+        <th>Musician</th>
+        <th>Upcoming Concerts</th>
+      </tr>
+
+      <% @tag.profiles.each do |profile| %>
+        <tr>
+          <td>Example</td>
+          <td><%= link_to profile.user.username, [profile.user, profile] %></td>
+          <td><%= profile.user.concerts.count %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <%= render partial: 'concerts/list', locals: { concerts: @tag.concerts } %>
+  </div>
+</div>
