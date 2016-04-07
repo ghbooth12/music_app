@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :genres
+
   get 'song_list' => 'welcome#song_list', as: :song_list
 
   resources :users, only: [] do

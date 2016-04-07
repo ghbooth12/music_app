@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="page-header">
+      <h2 class="text-center"><%= @genre.name %></h2>
+      <% if user_is_admin? %>
+        <span><%= link_to 'Edit', edit_genre_path(@genre) %></span>
+        <span><%= link_to 'Delete', @genre, method: :delete, data: { confirm: "Are you sure to delete this genre?" } unless @genre.profiles.any? %></span>
+      <% end %>
+    </div>
+    <table class="table">
+      <tr>
+        <th>Song</th>
+        <th>Musician</th>
+        <th>Upcoming Concerts</th>
+      </tr>
+
+      <% @genre.profiles.each do |profile| %>
+        <tr>
+          <td>Example</td>
+          <td><%= link_to profile.user.username, [profile.user, profile] %></td>
+          <td><%= profile.user.concerts.count %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
