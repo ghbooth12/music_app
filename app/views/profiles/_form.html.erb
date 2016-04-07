@@ -61,6 +61,19 @@
     <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: 'Enter your BIO' %>
   </div>
 
+  <h3 class="space-top">Genre &amp; Labels</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :genre_id, class: 'sr-only' %>
+        <%= select_tag 'profile[genre_id]', options_for_select(genre_list), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-9">
+
+    </div>
+  </div>
+
   <div class="pull-right">
     <%= button_tag class: 'btn btn-success' do %>
       <span class="glyphicon glyphicon-ok"></span> Save

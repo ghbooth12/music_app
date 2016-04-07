@@ -52,7 +52,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:avatar, :facebook_url, :twitter_url, :youtube_url, :soundcloud_url, :body)
+    params.require(:profile).permit(:avatar, :facebook_url, :twitter_url, :youtube_url, :soundcloud_url, :body, :genre_id)
   end
 
   def authorize_user_for_modify

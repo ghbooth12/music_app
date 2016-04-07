@@ -11,7 +11,9 @@
           <%= @profile.user.username %>
           <small class="social-btn"><%= render 'list' %></small>
         </h2>
-        <p>Jazz Pop Classic</p>
+        <p>
+          <%= link_to @profile.genre.name, @profile.genre, class: 'btn-sm btn-primary' %>
+        </p>
 
         <div class="soundcloud">
           <%= raw soundcloud_widget %>

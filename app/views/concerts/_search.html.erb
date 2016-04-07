@@ -1,5 +1,6 @@
-<h2>Nearby concerts</h2>
-<%= form_tag root_path, method: :get do %>
+<section id="nearby-concerts-search">
+  <h2>Nearby concerts</h2>
+  <%= form_tag root_path, method: :get do %>
   <%= label_tag :search, nil, class: 'sr-only' %>
   <%= text_field_tag :search, params[:search], placeholder: 'Zip Code or City' %>
   <span> within </span>
@@ -7,29 +8,30 @@
   <%= number_field_tag :miles, params[:miles], in: 0..100, step: 5 %>
   <span> miles </span>
   <%= submit_tag "Search Near", class: 'btn-sm btn-default' %>
-<% end %>
+  <% end %>
 
-<% if concerts.present? %>
-  <ul>
-    <% for concert in concerts %>
-      <% if concert.respond_to? :distance %>
-        <li><%= link_to concert.title, [concert.user, concert] %> (<%= concert.distance.round(2) %> miles)</li>
+  <% if concerts.present? %>
+    <ul>
+      <% for concert in concerts %>
+        <% if concert.respond_to? :distance %>
+          <li><%= link_to concert.title, [concert.user, concert] %> (<%= concert.distance.round(2) %> miles)</li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
 
-  <div class="space-top">
-    <div id="map" style="max-width: 700px; height: 400px;"></div>
-  </div>
+    <div class="space-top">
+      <div id="map" style="max-width: 700px; height: 400px;"></div>
+    </div>
 
-  <script type="text/javascript">
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
-  </script>
-<% elsif params[:search] %>
-  Sorry, no concerts nearby.
-<% end %>
+    <script type="text/javascript">
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    </script>
+  <% elsif params[:search] %>
+    <p>Sorry, no concerts nearby.</p>
+  <% end %>
+</section>

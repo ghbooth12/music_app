@@ -83,9 +83,15 @@ a:hover, a:focus, table a:not(.btn):hover, .table a:not(.btn):focus {
 .margin-left-sm {
   margin-left: 10px;
 }
+.inlined {
+  display: inline-block;
+}
 
 
 // Global Style
+section {
+  margin: 30px 0;
+}
 footer {
   margin: 50px auto;
 }

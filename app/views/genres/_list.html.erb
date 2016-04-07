@@ -1,0 +1,11 @@
+<section id="genres">
+  <h2 class="inlined">Genres</h2>
+  <% if user_is_admin? %>
+    <span class="margin-left-sm"><%= link_to 'Add', new_genre_path %></span>
+  <% end %>
+  <p>
+    <% Genre.all.each do |genre| %>
+      <%= link_to genre.name, genre, class: 'btn-sm btn-default' %>
+    <% end %>
+  </p>
+</section>
