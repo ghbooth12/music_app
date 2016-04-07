@@ -3,9 +3,6 @@
     <th>When</th>
     <th>Title</th>
     <th>Location (City State)</th>
-    <% if user_is_authrized?(current_user, profile) %>
-      <th>Manage</th>
-    <% end %>
   </tr>
 
   <% concerts.each do |concert| %>
@@ -15,7 +12,7 @@
         <%= link_to concert.title, [concert.user, concert]  %>
       </td>
       <td><%= concert.location_name %> <small>(<%= concert.city %> <%= concert.state %></small>)</td>
-      <% if user_is_authrized?(current_user, profile) %>
+      <% if user_is_authorized?(current_user, concert) %>
         <td>
           <%= link_to edit_user_concert_path(concert.user, concert) do %>
             <i class="fa fa-pencil-square-o fa-lg"></i>

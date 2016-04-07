@@ -13,6 +13,7 @@
         </h2>
         <p>
           <%= link_to @profile.genre.name, @profile.genre, class: 'btn-sm btn-primary' %>
+          <%= render partial: 'tags/list', locals: { tags: @profile.tags } %>
         </p>
 
         <div class="soundcloud">
@@ -35,7 +36,7 @@
     <div class="row">
       <h3>Upcoming Concerts</h3>
       <% if @profile.user.concerts.any? %>
-        <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts } %>
+        <%= render partial: 'concerts/list', locals: { concerts: @profile.user.concerts } %>
       <% else %>
         <p>No upcoming concerts...</p>
       <% end %>

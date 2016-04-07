@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.profiles.build(profile_params)
 
     if @profile.save
+      @profile.tags = Tag.make_tags(params[:profile][:tags])
       flash[:notice] = "Your profile was successfully created."
       redirect_to [current_user, @profile]
     else
@@ -24,6 +25,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(profile_params)
+      @profile.tags = Tag.make_tags(params[:profile][:tags])
       flash[:notice] = "Your profile was successfully updated."
       redirect_to [current_user, @profile]
     else

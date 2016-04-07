@@ -1,0 +1,3 @@
+<% unless tags.empty? %>
+  <%= raw tags.map {|t| link_to t.name, tag_path(id: t.id), class: 'btn-sm btn-default' }.join(' ') %>
+<% end %>

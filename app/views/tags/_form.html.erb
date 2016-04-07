@@ -1,0 +1,4 @@
+<div class="form-group">
+  <%= f.label :tags, class: 'sr-only' %>
+  <%= f.text_field :tags, class: 'form-control', placeholder: 'Enter tags (separated by commas)', value: tags.map(&:name).join(', ') %>
+</div>
