@@ -54,7 +54,7 @@
     <div class="col-md-4">
       <div class="form-group">
         <%= f.label :state, "State *" %>
-        <%= select_tag 'concert[state]', options_for_select(us_states), class: 'form-control' %>
+        <%= select_tag 'concert[state]', options_for_select(us_states, @concert.state), class: 'form-control' %>
       </div>
     </div>
     <div class="col-md-4">
