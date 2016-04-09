@@ -1,51 +1,65 @@
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="row">
-      <div class="col-md-6">
-        <small>
-          <%= image_tag(@profile.avatar.lg.url) if @profile.avatar? %>
-        </small>
-      </div>
-      <div class="col-md-6">
-        <h2>
-          <%= @profile.user.username %>
-          <small class="social-btn"><%= render 'list' %></small>
-        </h2>
-        <p>
-          <%= link_to @profile.genre.name, @profile.genre, class: 'btn-sm btn-primary' %>
-          <%= render partial: 'tags/list', locals: { tags: @profile.tags } %>
-        </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="row">
+        <div class="col-md-4">
+          <small>
+            <% if @profile.avatar? %>
+              <%= image_tag(@profile.avatar.lg.url) %>
+            <% else %>
+              <%= image_tag("/fallback/default_lg.png") %>
+            <% end %>
+          </small>
+        </div> <!-- /.col-md-6 -->
+        <div class="col-md-8">
+          <h2>
+            <%= @profile.user.username %>
+            <small class="social-btn"><%= render 'list' %></small>
+          </h2>
+          <p>
+            <%= link_to @profile.genre.name, @profile.genre, class: 'btn-sm btn-primary' %>
+            <%= render partial: 'tags/list', locals: { tags: @profile.tags } %>
+          </p>
 
-        <div class="soundcloud">
-          <%= raw soundcloud_widget %>
-        </div>
-      </div>
-    </div> <!-- /.row -->
+          <% if url = @profile.soundcloud_url %>
+            <div class="soundcloud">
+              <%= raw soundcloud_widget(url) %>
+            </div>
+          <% end %>
+        </div> <!-- /.col-md-6 -->
+      </div> <!-- /.row -->
 
-    <div class="row">
-      <h3>About</h3>
-      <p><%= @profile.body %></p>
-      <% if current_user && current_user == @profile.user %>
+      <div class="row space-top">
+        <h3>About</h3>
+        <p><%= @profile.body %></p>
+        <% if current_user && current_user == @profile.user %>
         <div class="space-top pull-right">
           <%= link_to 'Edit Public Profile', edit_user_profile_path(@profile.user, @profile), class: 'btn btn-primary' %>
         </div>
-      <% end %>
-    </div> <!-- /.row -->
-    <div class="space-top"></div>
+        <% end %>
+      </div>
 
-    <div class="row">
-      <h3>Upcoming Concerts</h3>
-      <% if @profile.user.concerts.any? %>
-        <%= render partial: 'concerts/list', locals: { concerts: @profile.user.concerts } %>
-      <% else %>
-        <p>No upcoming concerts...</p>
-      <% end %>
+      <div class="row space-top">
+        <% if @profile.user.concerts.any? %>
+          <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts } %>
+        <% else %>
+          <p>No upcoming concerts...</p>
+        <% end %>
+      </div>
 
-      <% if current_user && current_user == @profile.user %>
-        <div class="space-top pull-right">
-          <%= link_to 'Add new concert', new_user_concert_path(current_user), class: 'btn btn-success' %>
-        </div>
-      <% end %>
-    </div> <!-- /.row -->
-  </div> <!-- /.col-md-8 -->
-</div> <!-- /.row -->
+      <!-- premium user's recommend songs -->
+      <div class="row space-top">
+        <% if url = @profile.soundcloud_url %>
+          <h4 class="page-header">Recommend Songs</h4>
+          <% if soundcloud_widget(url).blank? %>
+            <p> Coming soon... </p>
+          <% else %>
+            <div class="soundcloud">
+              <%= raw soundcloud_widget(url) %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div> <!-- /.col-md-8 -->
+  </div> <!-- /.row -->
+</div> <!-- /.container -->
