@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
           <small>
             <% if @profile.avatar? %>
               <%= image_tag(@profile.avatar.lg.url) %>
@@ -11,7 +11,7 @@
             <% end %>
           </small>
         </div> <!-- /.col-md-6 -->
-        <div class="col-md-8">
+        <div class="col-md-7">
           <h2>
             <%= @profile.user.username %>
             <small class="social-btn"><%= render 'list' %></small>
@@ -40,17 +40,13 @@
       </div>
 
       <div class="row space-top">
-        <% if @profile.user.concerts.any? %>
-          <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts } %>
-        <% else %>
-          <p>No upcoming concerts...</p>
-        <% end %>
+        <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts } %>
       </div>
 
       <!-- premium user's recommend songs -->
-      <div class="row space-top">
+      <div class="row space-top-sm">
         <% if url = @profile.soundcloud_url %>
-          <h4 class="page-header">Recommend Songs</h4>
+          <h3>Recommend Songs</h3>
           <% if soundcloud_widget(url).blank? %>
             <p> Coming soon... </p>
           <% else %>

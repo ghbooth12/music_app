@@ -2,9 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#user-sidebar {
+  .list-group {
+    margin-top: 50px;
+  }
+}
 .soundcloud {
   margin-top: 20px;
   iframe {
     height: 80px;
+  }
+}
+.social-btn {
+  i {
+    padding-left: 10px;
   }
 }
