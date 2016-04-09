@@ -1,35 +1,12 @@
-<h3 class="space-top inlined">Concerts Schedule</h3>
-<% if user_is_authorized?(current_user, profile) %>
-  <%= link_to new_user_concert_path(current_user), class: 'btn-sm btn-primary margin-left-sm' do %>
-  <i class="fa fa-plus"></i> Add new concert
+<h3 class="inlined">Concerts Schedule</h3>
+<% if concerts.any? %>
+  <% if user_is_authorized?(current_user, profile) %>
+    <%= link_to new_user_concert_path(current_user), class: 'btn-sm btn-primary margin-left-sm' do %>
+    <i class="fa fa-plus"></i> Add new concert
+    <% end %>
   <% end %>
+
+  <%= render partial: 'concerts/table', locals: { concerts: concerts } %>
+<% else %>
+  <p>No upcoming concerts...</p>
 <% end %>
-
-
-<table class="table table-bordered">
-  <tr>
-    <th>When</th>
-    <th>Title</th>
-    <th>Location (City State)</th>
-  </tr>
-
-  <% concerts.each do |concert| %>
-    <tr>
-      <td><%= concert.show_date %>, <%= concert.show_time.strftime("%l:%M %P") %></td>
-      <td>
-        <%= link_to concert.title, [concert.user, concert]  %>
-      </td>
-      <td><%= concert.location_name %> <small>(<%= concert.city %> <%= concert.state %></small>)</td>
-      <% if user_is_authorized?(current_user, concert) %>
-        <td>
-          <%= link_to edit_user_concert_path(concert.user, concert) do %>
-            <i class="fa fa-pencil-square-o fa-lg"></i>
-          <% end %>
-          <%= link_to [concert.user, concert], method: :delete, data: { confirm: 'Are you sure to delete this concert information?' } do %>
-            <i class="fa fa-trash-o fa-lg"></i>
-          <% end %>
-        </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
