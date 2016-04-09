@@ -1,3 +1,11 @@
+<h3 class="space-top inlined">Concerts Schedule</h3>
+<% if user_is_authorized?(current_user, profile) %>
+  <%= link_to new_user_concert_path(current_user), class: 'btn-sm btn-primary margin-left-sm' do %>
+  <i class="fa fa-plus"></i> Add new concert
+  <% end %>
+<% end %>
+
+
 <table class="table table-bordered">
   <tr>
     <th>When</th>

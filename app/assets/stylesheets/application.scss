@@ -25,7 +25,7 @@
 .icon-bar {
   background-color: #DF691A;
 }
-.btn {
+.btn, .btn-xs, .btn-sm {
   border-radius: 7px;
 }
 .dropdown-menu .divider {
@@ -94,6 +94,9 @@ section {
 }
 footer {
   margin: 50px auto;
+}
+img {
+  border-radius: 10px;
 }
 #user-profile {
   .list-group {
