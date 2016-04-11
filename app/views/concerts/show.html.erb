@@ -4,7 +4,7 @@
 <section id="concert-show">
 <div class="row">
   <div class="pull-right">
-    <% if current_user && current_user == @concert.user %>
+    <% if user_is_authorized?(@concert) %>
       <%= link_to edit_user_concert_path(@concert.user, @concert), class: 'btn-sm btn-success' do %>
         <i class="fa fa-pencil-square-o fa-lg"></i> Edit
       <% end %>

@@ -7,7 +7,7 @@
     <%= render 'form' %>
 
     <div class="pull-left">
-      <%= link_to 'Back', [current_user, @concert], class: 'btn btn-default' %>
+      <%= link_to 'Back', [@concert.user, @concert], class: 'btn btn-default' %>
     </div>
   </div>
 </div>

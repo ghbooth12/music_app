@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :profiles, dependent: :destroy
   has_many :concerts, dependent: :destroy
+  has_many :songs, dependent: :destroy
 
   validates :username, length: { minimum: 3, maximum: 30 }, presence: true
 

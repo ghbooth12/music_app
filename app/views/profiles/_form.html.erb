@@ -1,4 +1,4 @@
-<%= form_for [current_user, @profile] do |f| %>
+<%= form_for [@user, @profile] do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
       <h4><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h4>
@@ -10,13 +10,13 @@
     </div>
   <% end %>
 
-  <h3 class="space-top">Profile Photo</h3>
+  <h3 class="space-top-sm">Profile Photo</h3>
   <div class="row">
     <div class="col-md-4">
       <h5>Current Photo</h5>
       <% if @profile.avatar? %>
         <%= image_tag(@profile.avatar.md.url) %>
-        <p><%= link_to "Remove Current Photo", user_remove_avatar_path(current_user), method: :delete %></p>
+        <p><%= link_to "Remove Current Photo", user_profile_remove_avatar_path(@profile.user, @profile), method: :delete %></p>
       <% else %>
         <%= image_tag("/fallback/default_md.png") %>
       <% end %>
