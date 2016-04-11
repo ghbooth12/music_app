@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :charges, only: [:new, :create]
   resources :tags, only: :show
   resources :genres
@@ -10,8 +9,11 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :profiles, except: [:index, :destroy]
     resources :concerts, except: :index
+    resources :songs, except: :show
 
-    delete 'profiles/remove_avatar' => 'profiles#remove_avatar', as: :remove_avatar
+    resources :profiles, only: [] do
+      delete 'remove_avatar' => 'profiles#remove_avatar', as: :remove_avatar       
+    end
   end
 
   devise_for :users

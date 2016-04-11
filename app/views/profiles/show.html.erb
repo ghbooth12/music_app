@@ -30,13 +30,13 @@
       </div> <!-- /.row -->
 
       <div class="row space-top">
-        <h3>About</h3>
-        <p><%= @profile.body %></p>
-        <% if current_user && current_user == @profile.user %>
-        <div class="space-top pull-right">
-          <%= link_to 'Edit Public Profile', edit_user_profile_path(@profile.user, @profile), class: 'btn btn-primary' %>
-        </div>
+        <h3 class="inlined">About</h3>
+        <% if user_is_authorized?(@profile) %>
+          <%= link_to edit_user_profile_path(@profile.user, @profile), class: 'btn-sm btn-primary margin-left-sm' do %>
+            <i class="fa fa-pencil"></i> Edit Public Profile
+          <% end %>
         <% end %>
+        <p><%= @profile.body %></p>
       </div>
 
       <div class="row space-top">

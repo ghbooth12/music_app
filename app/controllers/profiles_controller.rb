@@ -1,23 +1,27 @@
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :authorize_user_for_modify, only: [:edit, :update]
-  before_action :set_profile, only: [:edit, :update]
-  before_action :authorize_user_for_create, only: [:new, :create, :remove_avatar]
+  before_action :set_user
+  before_action :set_profile, only: [:show, :edit, :update]
+  before_action :allow_one_profile, only: [:new, :create]
+  before_action :authorize_user, except: :show
 
   def new
     @profile = Profile.new
   end
 
   def create
-    @profile = current_user.profiles.build(profile_params)
+    @profile = @user.profiles.build(profile_params)
 
     if @profile.save
       @profile.tags = Tag.make_tags(params[:profile][:tags])
       flash[:notice] = "Your profile was successfully created."
-      redirect_to [current_user, @profile]
+      redirect_to [@profile.user, @profile]
     else
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
@@ -27,49 +31,47 @@ class ProfilesController < ApplicationController
     if @profile.update_attributes(profile_params)
       @profile.tags = Tag.make_tags(params[:profile][:tags])
       flash[:notice] = "Your profile was successfully updated."
-      redirect_to [current_user, @profile]
+      redirect_to [@profile.user, @profile]
     else
       render :edit
     end
   end
 
-  def show
-    @profile = Profile.find(params[:id])
-  end
-
   def remove_avatar
-    profile = current_user.profiles.first
+    profile = @user.profiles.find(params[:profile_id])
     profile.remove_avatar!
     if profile.save
-      redirect_to [current_user, profile]
+      redirect_to edit_user_profile_path(profile.user, profile)
     else
-      render :show
     end
   end
 
   private
 
-  def set_profile
-    @profile = current_user.profiles.find(params[:id])
+  def profile_params # create, update
+    params.require(:profile).permit(:avatar, :facebook_url, :twitter_url, :youtube_url, :soundcloud_url, :body, :genre_id, :avatar_cache)
   end
 
-  def profile_params
-    params.require(:profile).permit(:avatar, :facebook_url, :twitter_url, :youtube_url, :soundcloud_url, :body, :genre_id)
+  def set_user # all
+    @user = User.find(params[:user_id])
   end
 
-  def authorize_user_for_modify
-    profile = Profile.find(params[:id])
-    unless current_user == profile.user
-      flash[:alert] = "You must be an admin or an owner of this profile page to do that."
+  def set_profile # show, edit, update
+    @profile = @user.profiles.find(params[:id])
+  end
+
+  def allow_one_profile # new, create
+    profile = @user.profiles.first
+    if profile
+      flash[:alert] = "Profile already exists."
       redirect_to [profile.user, profile]
     end
   end
 
-  def authorize_user_for_create
-    user = User.find(params[:user_id])
-    unless current_user == user
-      flash[:alert] = "You can do that on your profile page."
-      redirect_to [user, user.profiles.first]
+  def authorize_user # new, create, edit, update, remove_avatar
+    unless current_user == @user || current_user.admin?
+      flash[:alert] = "Wrong Access. Authorized Personnel Only"
+      redirect_to root_path
     end
   end
 end

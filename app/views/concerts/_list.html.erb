@@ -1,8 +1,8 @@
 <h3 class="inlined">Concerts Schedule</h3>
 <% if concerts.any? %>
-  <% if user_is_authorized?(current_user, profile) %>
-    <%= link_to new_user_concert_path(current_user), class: 'btn-sm btn-primary margin-left-sm' do %>
-    <i class="fa fa-plus"></i> Add new concert
+  <% if user_is_authorized?(profile) %>
+    <%= link_to new_user_concert_path(profile.user), class: 'btn-sm btn-primary margin-left-sm' do %>
+      <i class="fa fa-plus"></i> Add new concert
     <% end %>
   <% end %>
 

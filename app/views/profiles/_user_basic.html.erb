@@ -1,0 +1,16 @@
+<h3 class="inlined">Basic Profile</h3>
+<%= link_to edit_user_registration_path, class: 'btn-sm btn-primary margin-left-sm' do %>
+  <i class="fa fa-pencil"></i> Edit Basic Profile
+<% end %>
+
+<table class="table">
+  <tr>
+    <th>Username</th>
+    <td><%= user.username %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= user.email %></td>
+  </tr>
+</table>
+<hr>

@@ -1,4 +1,4 @@
-<%= form_for [current_user, @concert] do |f| %>
+<%= form_for [@user, @concert] do |f| %>
   <% if @concert.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
       <h4><%= pluralize(@concert.errors.count, "error") %> prohibited this concert from being saved:</h4>
