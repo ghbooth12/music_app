@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410164018) do
+ActiveRecord::Schema.define(version: 20160412223716) do
 
   create_table "concerts", force: :cascade do |t|
     t.date     "show_date"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20160410164018) do
     t.string   "location_name"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "genre_id"
   end
 
+  add_index "concerts", ["genre_id"], name: "index_concerts_on_genre_id"
   add_index "concerts", ["user_id"], name: "index_concerts_on_user_id"
 
   create_table "genres", force: :cascade do |t|

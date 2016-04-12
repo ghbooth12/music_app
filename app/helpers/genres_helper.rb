@@ -6,6 +6,6 @@ module GenresHelper
   end
 
   def visibile_genres
-    Genre.select {|g| g.profiles.any?}
+    Genre.select {|g| g.profiles.any? || g.concerts.any?}
   end
 end

@@ -53,7 +53,7 @@ class ConcertsController < ApplicationController
   private
 
   def concert_params
-    params.require(:concert).permit(:title, :show_date, :show_time, :location_name, :address_1, :address_2, :city, :state, :zipcode, :phone_number, :location_url, :body)
+    params.require(:concert).permit(:title, :show_date, :show_time, :location_name, :address_1, :address_2, :city, :state, :zipcode, :phone_number, :location_url, :body, :genre_id)
   end
 
   def set_user # all

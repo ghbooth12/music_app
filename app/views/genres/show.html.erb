@@ -23,5 +23,7 @@
         </tr>
       <% end %>
     </table>
+
+    <%= render partial: 'concerts/table', locals: { concerts: @genre.concerts } %>
   </div>
 </div>
