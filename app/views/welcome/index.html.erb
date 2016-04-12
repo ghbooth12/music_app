@@ -8,7 +8,7 @@
 
 <section id="all-tags">
   <h2>All Tags</h2>
-  <%= render partial: 'tags/list', locals: { tags: Tag.all } %>
+  <%= render partial: 'tags/list', locals: { tags: visibile_tags } %>
 </section>
 
 <%= render partial: 'concerts/search', locals: { concerts: @concerts } %>

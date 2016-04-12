@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
   resources :tags, only: :show
-  resources :genres
+  resources :genres, except: :index
 
   delete 'charges/cancel_premium' => 'charges#cancel_premium', as: :cancel_premium
   get 'song_list' => 'welcome#song_list', as: :song_list
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :songs, except: :show
 
     resources :profiles, only: [] do
-      delete 'remove_avatar' => 'profiles#remove_avatar', as: :remove_avatar       
+      delete 'remove_avatar' => 'profiles#remove_avatar', as: :remove_avatar
     end
   end
 

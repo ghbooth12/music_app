@@ -10,7 +10,7 @@ class Tag < ActiveRecord::Base
     return Tag.none if string.blank?
 
     string.split(',').map do |tag|
-      Tag.find_or_create_by(name: tag.strip)
+      Tag.find_or_create_by(name: tag.downcase.strip)
     end
   end
 end
