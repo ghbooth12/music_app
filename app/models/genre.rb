@@ -1,5 +1,6 @@
 class Genre < ActiveRecord::Base
   has_many :profiles
+  has_many :concerts
 
   before_save { self.name = name.capitalize }
 

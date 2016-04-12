@@ -77,7 +77,7 @@
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">
-        <%= f.label :genre_id, class: 'sr-only' %>
+        <%= f.label :genre_id, 'Genre *' %>
         <%= select_tag 'profile[genre_id]', options_for_select(genre_list, @profile.genre_id), class: 'form-control' %>
       </div>
     </div>

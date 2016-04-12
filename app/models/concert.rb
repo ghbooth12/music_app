@@ -1,8 +1,9 @@
 class Concert < ActiveRecord::Base
+  belongs_to :genre
   belongs_to :user
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
-  
+
   before_save { self.city = city.capitalize }
 
   geocoded_by :full_address
@@ -22,6 +23,7 @@ class Concert < ActiveRecord::Base
   validates :phone_number, length: { is: 10 }, allow_blank: true
   validates_format_of :phone_number, :with => /\d{10}/ix, message: "Should be only numbers. A space and - and () are not allowed.", allow_blank: true
   # validates_format_of :location_url, :with => /((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/ix, allow_blank: true
+  validates :genre_id, presence: true
 
   def full_address
     "#{address_1}, #{city}, #{state}"
