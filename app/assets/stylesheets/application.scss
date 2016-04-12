@@ -113,3 +113,17 @@ img {
 .gm-style-iw {
   color: #000;
 }
+#user-sidebar {
+  .list-group {
+    margin-top: 50px;
+  }
+}
+.soundcloud {
+  margin-top: 20px;
+  iframe {
+    height: 80px;
+  }
+  .btn {
+    margin-top: 14px;
+  }
+}

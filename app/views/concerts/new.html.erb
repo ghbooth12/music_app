@@ -7,10 +7,10 @@
     <%= render 'form' %>
 
     <div class="pull-left">
-      <% if @concert.user.profiles.first %>
-        <%= link_to 'Back', edit_user_profile_path(@concert.user, @concert.user.profiles.first), class: 'btn btn-default' %>
+      <% if @user.profiles.first %>
+        <%= link_to 'Back', edit_user_profile_path(@user, @user.profiles.first), class: 'btn btn-default' %>
       <% else %>
-        <%= link_to 'Back', new_user_profile_path(@concert.user), class: 'btn btn-default' %>
+        <%= link_to 'Back', new_user_profile_path(@user), class: 'btn btn-default' %>
       <% end %>
     </div>
   </div>

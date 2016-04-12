@@ -44,18 +44,20 @@
       </div>
 
       <!-- premium user's recommend songs -->
-      <div class="row space-top-sm">
-        <% if url = @profile.soundcloud_url %>
-          <h3>Recommend Songs</h3>
-          <% if soundcloud_widget(url).blank? %>
-            <p> Coming soon... </p>
-          <% else %>
-            <div class="soundcloud">
-              <%= raw soundcloud_widget(url) %>
-            </div>
+      <% if @user.premium? %>
+        <div class="row space-top-sm">
+          <h3 class="inlined">Recommended Music</h3>
+          <% if premium_or_admin?(@user) %>
+            <%= link_to new_user_song_path(@user), class: 'btn-sm btn-primary margin-left-xs' do %>
+              <i class="fa fa-plus"></i> Add
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+
+          <div class="space-top-sm">
+            <%= render 'songs/list', { songs: @user.songs } %>
+          </div>
+        </div>
+      <% end %>
     </div> <!-- /.col-md-8 -->
   </div> <!-- /.row -->
 </div> <!-- /.container -->

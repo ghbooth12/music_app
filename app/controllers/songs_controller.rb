@@ -1,5 +1,4 @@
 class SongsController < ApplicationController
-  skip_before_action :authenticate_user!
   before_action :set_user
   before_action :authorize_user
   before_action :set_song, only: [:edit, :update, :destroy]
@@ -50,14 +49,14 @@ class SongsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  def authorize_user
-    unless current_user == @user && (current_user.admin? || current_user.premium?)
+  def authorize_user # all
+    unless (current_user == @user && current_user.premium?) || current_user.admin?
       flash[:alert] = "Wrong Access. Authorized Personnel Only"
-      redirect_to [@user, @user.profiles.first]
+      redirect_to root_path
     end
   end
 
-  def set_song
+  def set_song # edit, update, destroy
     @song = @user.songs.find(params[:id])
   end
 

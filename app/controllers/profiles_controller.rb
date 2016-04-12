@@ -2,8 +2,8 @@ class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :set_user
   before_action :set_profile, only: [:show, :edit, :update]
-  before_action :allow_one_profile, only: [:new, :create]
   before_action :authorize_user, except: :show
+  before_action :allow_one_profile, only: [:new, :create]
 
   def new
     @profile = Profile.new
@@ -60,18 +60,18 @@ class ProfilesController < ApplicationController
     @profile = @user.profiles.find(params[:id])
   end
 
+  def authorize_user # new, create, edit, update, remove_avatar
+    unless current_user == @user || current_user.admin?
+      flash[:alert] = "Wrong Access. Authorized Personnel Only"
+      redirect_to root_path
+    end
+  end
+
   def allow_one_profile # new, create
     profile = @user.profiles.first
     if profile
       flash[:alert] = "Profile already exists."
       redirect_to [profile.user, profile]
-    end
-  end
-
-  def authorize_user # new, create, edit, update, remove_avatar
-    unless current_user == @user || current_user.admin?
-      flash[:alert] = "Wrong Access. Authorized Personnel Only"
-      redirect_to root_path
     end
   end
 end

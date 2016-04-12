@@ -10,4 +10,8 @@ module ApplicationHelper
   def user_is_authorized?(instance)
     current_user && (current_user == instance.user || current_user.admin?)
   end
+
+  def premium_or_admin?(user)
+    (current_user == user && current_user.premium?) || (current_user && current_user.admin?)
+  end
 end

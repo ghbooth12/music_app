@@ -32,6 +32,7 @@ class ChargesController < ApplicationController
 
   def cancel_premium
     current_user.standard!
+    current_user.songs.destroy_all
 
     flash[:notice] = "You have canceled Premium service, #{current_user.username}. You are now #{current_user.role} member."
     redirect_to root_path

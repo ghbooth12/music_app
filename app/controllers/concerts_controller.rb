@@ -1,8 +1,8 @@
 class ConcertsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :set_user
-  before_action :set_concert, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user, except: :show
+  before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
   def new
     @concert = Concert.new
