@@ -7,13 +7,13 @@ module RandomData
   def self.random_user
     test_users = (1..5).to_a.map do |n|
       User.new(
-        username: Faker::Name.name,
+        username: Faker::Name.name + "#{n}",
         email:    "test#{n}@example.com",
         password: "testtest"
       )
     end
 
-    test_users.map do |user|
+    test_users.map! do |user|
       user.skip_confirmation!
       user.save
     end

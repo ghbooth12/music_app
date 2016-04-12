@@ -4,4 +4,8 @@ module GenresHelper
 
     [['Select Genre', '']].concat(list)
   end
+
+  def visibile_genres
+    Genre.select {|g| g.profiles.any?}
+  end
 end

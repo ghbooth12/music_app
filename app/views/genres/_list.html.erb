@@ -4,7 +4,7 @@
     <span class="margin-left-sm"><%= link_to 'Add', new_genre_path %></span>
   <% end %>
   <p>
-    <% Genre.all.each do |genre| %>
+    <% visibile_genres.each do |genre| %>
       <%= link_to genre.name, genre, class: 'btn-sm btn-primary' %>
     <% end %>
   </p>

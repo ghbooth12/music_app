@@ -1,5 +1,5 @@
 class Genre < ActiveRecord::Base
-  has_many :profiles, dependent: :destroy
+  has_many :profiles
 
   before_save { self.name = name.capitalize }
 
