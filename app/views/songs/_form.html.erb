@@ -1,0 +1,26 @@
+<%= form_for [@user, @song] do |f| %>
+  <% if @song.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= pluralize(@song.errors.count, "error") %> prohibited this song from being saved:</h4>
+      <ul>
+        <% @song.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :song_url, class: 'sr-only' %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-soundcloud"></i></span>
+      <%= f.url_field :song_url, class: 'form-control', placeholder: 'http://www.soundcloud.com/username/songtitle' %>
+    </div>
+  </div>
+
+  <div class="pull-right">
+    <%= button_tag class: 'btn btn-success' do %>
+      <span class="glyphicon glyphicon-ok"></span> Save
+    <% end %>
+  </div>
+<% end %>
