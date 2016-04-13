@@ -57,7 +57,8 @@ address_array.each do |name, address|
     phone_number:  '1230001234',
     location_url:  "http://www.google.com",
     body:          Faker::Lorem.paragraph,
-    user:          users.sample
+    user:          users.sample,
+    genre:         genres.sample
   )
 end
 

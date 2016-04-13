@@ -45,7 +45,7 @@
       </div>
 
       <!-- premium user's recommend songs -->
-      <% if @user.premium? %>
+      <% if @user.premium? || @user.admin? %>
         <div class="row space-top-sm">
           <h3 class="inlined">Recommended Music</h3>
           <% if premium_or_admin?(@user) %>

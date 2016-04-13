@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :genres, except: :index
 
   delete 'charges/cancel_premium' => 'charges#cancel_premium', as: :cancel_premium
-  get 'song_list' => 'welcome#song_list', as: :song_list
+  get 'musicians' => 'welcome#musician_list', as: :musician_list
+  get 'concerts' => 'welcome#concert_list', as: :concert_list
 
   resources :users, only: [] do
     resources :profiles, except: [:index, :destroy]
