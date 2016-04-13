@@ -1,0 +1,33 @@
+<% @title = "Musicians | Discover new music" %>
+<div id="concert-list" class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="page-header">
+      <h2 class="text-center">Concerts</h2>
+    </div>
+
+    <div class="space-top-sm">
+      <table class="table">
+        <% Concert.all.each do |concert| %>
+          <tr>
+            <td><%= concert.show_date.strftime("%m/%d") %>, <%= concert.show_time.strftime("%l:%M %P") %></td>
+            <td><%= link_to concert.title, [concert.user, concert] %></td>
+            <td><%= concert.location_name %> <small>(<%= concert.city %> <%= concert.state %></small>)</td>
+            <td><i class="fa fa-heart" aria-hidden="true"></i> #</td>
+            <% if user_is_authorized?(concert) %>
+              <td>
+                <%= link_to edit_user_concert_path(concert.user, concert) do %>
+                  <i class="fa fa-pencil-square-o fa-lg"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to [concert.user, concert], method: :delete, data: { confirm: 'Are you sure to delete this concert information?' } do %>
+                  <i class="fa fa-trash-o fa-lg"></i>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -13,103 +13,113 @@
 
     <!-- Concert Section -->
     <div class="col-md-6">
-      <h4>Concert</h4>
-      <div class="form-group">
-        <%= f.label :title, "Concert Title *" %>
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Concert</h3>
+        </div>
+        <div class="panel-body">
           <div class="form-group">
-            <%= f.label :show_date, "Concert Date *" %>
-            <%= f.date_field :show_date, class: 'form-control' %>
+            <%= f.label :title, "Concert Title *" %>
+            <%= f.text_field :title, class: 'form-control' %>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :show_time, "Concert Time *" %>
-            <%= f.time_field :show_time, class: 'form-control' %>
-          </div>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <%= f.label :body, "About Concert" %>
-        <%= f.text_area :body, rows: 4, class: 'form-control' %>
-      </div>
-
-      <h4>Genre &amp; Labels</h4>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            <%= f.label :genre_id, 'Genre *' %>
-            <%= select_tag 'concert[genre_id]', options_for_select(genre_list, @concert.genre_id), class: 'form-control' %>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :show_date, "Concert Date *" %>
+                <%= f.date_field :show_date, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :show_time, "Concert Time *" %>
+                <%= f.time_field :show_time, class: 'form-control' %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-9">
-          <%= render partial: 'tags/form', locals: { f: f, tags: @concert.tags } %>
-        </div>
-      </div>
+
+          <div class="form-group">
+            <%= f.label :body, "About Concert" %>
+            <%= f.text_area :body, rows: 4, class: 'form-control' %>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <%= f.label :genre_id, 'Genre *' %>
+                <%= select_tag 'concert[genre_id]', options_for_select(genre_list, @concert.genre_id), class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <%= render partial: 'tags/form', locals: { f: f, tags: @concert.tags } %>
+            </div>
+          </div>
+        </div> <!-- /.panel-body -->
+      </div> <!-- /.panel -->
     </div> <!-- End Concert Section -->
 
     <!-- Venue Section -->
     <div class="col-md-6">
-      <h4>Venue</h4>
-      <div class="form-group">
-        <%= f.label :location_name, "Name of Venue *" %>
-        <%= f.text_field :location_name, class: 'form-control', placeholder: 'eg) Concert hall name, restaurant name, bar name, etc' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :address_1, "Address 1 *" %>
-        <%= f.text_field :address_1, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :address_2 %>
-        <%= f.text_field :address_2, class: 'form-control' %>
-      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Venue</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <%= f.label :location_name, "Name of Venue *" %>
+            <%= f.text_field :location_name, class: 'form-control', placeholder: 'eg) Concert hall name, restaurant name, bar name, etc' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :address_1, "Address 1 *" %>
+            <%= f.text_field :address_1, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :address_2 %>
+            <%= f.text_field :address_2, class: 'form-control' %>
+          </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.label :city, "City *" %>
-            <%= f.text_field :city, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.label :state, "State *" %>
-            <%= select_tag 'concert[state]', options_for_select(us_states, @concert.state), class: 'form-control' %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.label :zipcode, "Zip Code" %>
-            <%= f.text_field :zipcode, class: 'form-control' %>
-          </div>
-        </div>
-      </div> <!-- /.row -->
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <%= f.label :city, "City *" %>
+                <%= f.text_field :city, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <%= f.label :state, "State *" %>
+                <%= select_tag 'concert[state]', options_for_select(us_states, @concert.state), class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <%= f.label :zipcode, "Zip Code" %>
+                <%= f.text_field :zipcode, class: 'form-control' %>
+              </div>
+            </div>
+          </div> <!-- /.row -->
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :phone_number %>
-            <%= f.telephone_field :phone_number, class: 'form-control', placeholder: 'eg) 3120001234' %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :location_url, "Location URL" %>
-            <%= f.url_field :location_url, class: 'form-control', placeholder: "http://www.example.com" %>
-          </div>
-        </div>
-      </div> <!-- /.row -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :phone_number %>
+                <%= f.telephone_field :phone_number, class: 'form-control', placeholder: 'eg) 3120001234' %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :location_url, "Location URL" %>
+                <%= f.url_field :location_url, class: 'form-control', placeholder: "http://www.example.com" %>
+              </div>
+            </div>
+          </div> <!-- /.row -->
+        </div> <!-- /.panel-body -->
+      </div> <!-- /.panel -->
     </div> <!-- End Venue Section -->
-
+</div> <!-- /.row -->
     <div class="pull-right">
       <%= button_tag class: 'btn btn-success' do %>
         <span class="glyphicon glyphicon-ok"></span> Save
       <% end %>
     </div>
   <% end %>
-</div>

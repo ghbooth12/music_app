@@ -13,7 +13,9 @@ class WelcomeController < ApplicationController
     end
   end
 
-  def song_list
-    @profiles = Profile.all
+  def musician_list
+  end
+
+  def concert_list
   end
 end

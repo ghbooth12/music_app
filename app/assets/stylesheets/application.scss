@@ -21,6 +21,11 @@
 
 @import 'font-awesome';
 
+// Override font-awesome
+.fa {
+  margin-right: 7px;
+}
+
 // Override bootstrap
 .icon-bar {
   background-color: #DF691A;

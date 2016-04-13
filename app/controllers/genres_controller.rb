@@ -31,8 +31,8 @@ class GenresController < ApplicationController
   end
 
   def destroy
-    if @genre.profiles.any?
-      flash[:alert] = "If any profile belongs to the genre, the genre cannot be deleted."
+    if @genre.profiles.any? || @genre.concerts.any?
+      flash[:alert] = "If the genre has the contents, the genre cannot be deleted."
       redirect_to @genre
     else
       if @genre.destroy

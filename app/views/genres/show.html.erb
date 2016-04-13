@@ -5,7 +5,7 @@
       <h2 class="text-center"><%= @genre.name %></h2>
       <% if user_is_admin? %>
         <span><%= link_to 'Edit', edit_genre_path(@genre) %></span>
-        <span><%= link_to 'Delete', @genre, method: :delete, data: { confirm: "Are you sure to delete this genre?" } unless @genre.profiles.any? %></span>
+        <span><%= link_to 'Delete', @genre, method: :delete, data: { confirm: "Are you sure to delete this genre?" } unless @genre.profiles.any? || @genre.concerts.any? %></span>
       <% end %>
     </div>
     <table class="table">

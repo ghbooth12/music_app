@@ -2,7 +2,7 @@ module GenresHelper
   def genre_list
     list = Genre.all.map {|genre| [genre.name, genre.id] }
 
-    [['Select Genre', '']].concat(list)
+    [['Select', '']].concat(list)
   end
 
   def visibile_genres
