@@ -1,7 +1,25 @@
 <% @title = "#{@user.username} | Profile" %>
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="pull-left">
+      <div id="favorite">
+        <% if favorite = current_user.favorite_for(@profile) %>
+          <%= render 'favorites/undo', { profile: @profile, favorite: favorite  } %>
+        <% else %>
+          <%= render 'favorites/like', { profile: @profile } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="pull-right">
+      <% if user_is_authorized?(@profile) %>
+        <%= link_to edit_user_profile_path(@profile.user, @profile), class: 'btn-sm btn-info margin-left-sm' do %>
+        <i class="fa fa-pencil"></i> Edit Public Profile
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row" style="border-top: solid 5px #607D8B;">
+    <div class="col-md-8 col-md-offset-2 space-top">
       <div class="row">
         <div class="col-md-5">
           <small>
@@ -31,12 +49,7 @@
       </div> <!-- /.row -->
 
       <div class="row space-top">
-        <h3 class="inlined">About</h3>
-        <% if user_is_authorized?(@profile) %>
-          <%= link_to edit_user_profile_path(@profile.user, @profile), class: 'btn-sm btn-primary margin-left-sm' do %>
-            <i class="fa fa-pencil"></i> Edit Public Profile
-          <% end %>
-        <% end %>
+        <h3>About</h3>
         <p><%= @profile.body %></p>
       </div>
 
@@ -49,16 +62,16 @@
         <div class="row space-top-sm">
           <h3 class="inlined">Recommended Music</h3>
           <% if premium_or_admin?(@user) %>
-            <%= link_to new_user_song_path(@user), class: 'btn-sm btn-primary margin-left-xs' do %>
+            <%= link_to new_user_song_path(@user), class: 'btn-sm btn-success margin-left-xs' do %>
               <i class="fa fa-plus"></i> Add
             <% end %>
           <% end %>
 
-          <div class="space-top-sm">
+          <div class="col-md-12 space-top-sm">
             <%= render 'songs/list', { songs: @user.songs } %>
           </div>
         </div>
       <% end %>
     </div> <!-- /.col-md-8 -->
   </div> <!-- /.row -->
-</div> <!-- /.container -->
+</div>

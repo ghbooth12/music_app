@@ -3,7 +3,7 @@
     <th>When</th>
     <th>Title</th>
     <th>Location (City State)</th>
-    <th colspan="2"></th>
+    <th></th>
   </tr>
 
   <% concerts.each do |concert| %>
@@ -12,12 +12,10 @@
       <td><%= link_to concert.title, [concert.user, concert] %></td>
       <td><%= concert.location_name %> <small>(<%= concert.city %> <%= concert.state %></small>)</td>
       <% if user_is_authorized?(concert) %>
-        <td>
+        <td class="text-left">
           <%= link_to edit_user_concert_path(concert.user, concert) do %>
             <i class="fa fa-pencil-square-o fa-lg"></i>
           <% end %>
-        </td>
-        <td>
           <%= link_to [concert.user, concert], method: :delete, data: { confirm: 'Are you sure to delete this concert information?' } do %>
             <i class="fa fa-trash-o fa-lg"></i>
           <% end %>
