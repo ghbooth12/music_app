@@ -4,8 +4,9 @@
     <div class="page-header">
       <h2 class="text-center">Musicians</h2>
     </div>
-    <div class="text-right">
-      <small><i class="fa fa-music" aria-hidden="true"></i> Number of concerts </small>
+    <div class="text-right" style="color: #7C8792;">
+      <small><i class="fa fa-music" aria-hidden="true"></i> Number of concerts </small> |
+      <small><i class="fa fa-bookmark" aria-hidden="true"></i> Number of concert bookmarks </small>
     </div>
     <div class="space-top-sm">
       <table class="table">
@@ -20,7 +21,7 @@
             </td>
             <td><%= link_to profile.user.username, [profile.user, profile] %></td>
             <td><i class="fa fa-heart" aria-hidden="true"></i> <%= profile.favorites.count %></td>
-            <td><i class="fa fa-music" aria-hidden="true"></i> <%= profile.user.concerts.count %></td>
+            <td><i class="fa fa-music" aria-hidden="true"></i> <%= profile.user.concerts.count %> <small class="margin-left-sm" style="color: #7C8792;"><i class="fa fa-bookmark" aria-hidden="true"></i> <%= profile.user.bookmarks.count %></small></td>
           </tr>
         <% end %>
       </table>
