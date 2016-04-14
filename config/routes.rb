@@ -17,8 +17,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :profile, only: [] do
+  resources :profiles, only: [] do
     resources :favorites, only: [:create, :destroy]
+  end
+
+  resources :concerts, only: [] do
+    resources :bookmarks, only: [:create, :destroy]
   end
 
   devise_for :users

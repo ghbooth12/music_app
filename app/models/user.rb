@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :concerts, dependent: :destroy
   has_many :songs, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   validates :username, length: { minimum: 3, maximum: 30 }, presence: true
 
@@ -20,5 +21,9 @@ class User < ActiveRecord::Base
 
   def favorite_for(profile)
     self.favorites.find_by(profile_id: profile.id)
+  end
+
+  def bookmark_for(concert)
+    self.bookmarks.find_by(concert_id: concert.id)
   end
 end

@@ -3,6 +3,7 @@ class Concert < ActiveRecord::Base
   belongs_to :user
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
+  has_many :bookmarks, dependent: :destroy
 
   before_save { self.city = city.capitalize }
 

@@ -4,6 +4,15 @@
 <% @title = "#{@user.username} | #{@concert.title}" %>
 <section id="concert-show">
 <div class="row">
+  <div class="pull-left">
+    <div id="bookmark">
+      <% if bookmark = current_user.bookmark_for(@concert) %>
+        <%= render 'bookmarks/undo', { concert: @concert, bookmark: bookmark } %>
+      <% else %>
+        <%= render 'bookmarks/like', { concert: @concert } %>
+      <% end %>
+    </div>
+  </div>
   <div class="pull-right">
     <% if user_is_authorized?(@concert) %>
       <%= link_to edit_user_concert_path(@concert.user, @concert), class: 'btn-sm btn-success' do %>

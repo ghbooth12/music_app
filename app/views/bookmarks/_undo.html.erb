@@ -1,0 +1,3 @@
+<%= link_to [concert, bookmark], method: :delete, remote: true, class: 'icon-full' do %>
+  <i class="fa fa-bookmark" aria-hidden="true"></i> <%= concert.bookmarks.count %>
+<% end %>

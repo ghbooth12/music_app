@@ -1,0 +1,6 @@
+<% if Bookmark.exists?(id: @bookmark.id) %>
+  $('.flash').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @msg %></div>");
+  $('#bookmark').html("<%=j render 'bookmarks/undo', { concert: @concert, bookmark: @bookmark } %>");
+<% else %>
+  $('.flash').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @msg %></div>");
+<% end %>

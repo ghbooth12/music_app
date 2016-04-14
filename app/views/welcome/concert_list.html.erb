@@ -12,14 +12,12 @@
             <td><%= concert.show_date.strftime("%m/%d") %>, <%= concert.show_time.strftime("%l:%M %P") %></td>
             <td><%= link_to concert.title, [concert.user, concert] %></td>
             <td><%= concert.location_name %> <small>(<%= concert.city %> <%= concert.state %></small>)</td>
-            <td><i class="fa fa-heart" aria-hidden="true"></i> #</td>
+            <td><i class="fa fa-bookmark" aria-hidden="true"></i> <%= concert.bookmarks.count %></td>
             <% if user_is_authorized?(concert) %>
               <td>
                 <%= link_to edit_user_concert_path(concert.user, concert) do %>
                   <i class="fa fa-pencil-square-o fa-lg"></i>
                 <% end %>
-              </td>
-              <td>
                 <%= link_to [concert.user, concert], method: :delete, data: { confirm: 'Are you sure to delete this concert information?' } do %>
                   <i class="fa fa-trash-o fa-lg"></i>
                 <% end %>
