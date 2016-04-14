@@ -1,0 +1,6 @@
+<% if Favorite.exists?(id: @favorite.id) %>
+  $('.flash').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @msg %></div>");
+  $('#favorite').html("<%=j render 'favorites/undo', { profile: @profile, favorite: @favorite } %>");
+<% else %>
+  $('.flash').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @msg %></div>");
+<% end %>

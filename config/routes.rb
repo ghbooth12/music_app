@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :profile, only: [] do
+    resources :favorites, only: [:create, :destroy]
+  end
+
   devise_for :users
   root 'welcome#index'
 end

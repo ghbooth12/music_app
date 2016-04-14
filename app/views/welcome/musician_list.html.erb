@@ -19,7 +19,7 @@
               <% end %>
             </td>
             <td><%= link_to profile.user.username, [profile.user, profile] %></td>
-            <td><i class="fa fa-heart" aria-hidden="true"></i> #</td>
+            <td><i class="fa fa-heart" aria-hidden="true"></i> <%= profile.favorites.count %></td>
             <td><i class="fa fa-music" aria-hidden="true"></i> <%= profile.user.concerts.count %></td>
           </tr>
         <% end %>

@@ -1,0 +1,6 @@
+<% if @favorite.destroyed? %>
+  $('.flash').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @msg %></div>");
+  $('#favorite').html("<%=j render 'favorites/like', { profile: @profile } %>");
+<% else %>
+  $('.flash').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @msg %></div>");
+<% end %>

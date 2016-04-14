@@ -1,0 +1,3 @@
+<%= link_to [profile, favorite], class: 'favorite-full', method: :delete, remote: true do %>
+  <i class="fa fa-heart" aria-hidden="true"></i> <%= profile.favorites.count %>
+<% end %>

@@ -1,21 +1,15 @@
 <% if songs.any? %>
     <% songs.each do |song| %>
       <div class="row soundcloud">
-        <div class="col-md-10">
-          <%= raw premium_soundcloud(song.song_url) %>
-        </div>
-        <div class="col-md-2 btn">
+        <%= raw premium_soundcloud(song.song_url) %>
+        <div class="pull-right">
           <% if premium_or_admin?(@user) %>
-            <p>
-              <%= link_to edit_user_song_path(song.user, song), class: 'btn-sm btn-success' do %>
-                <i class="fa fa-pencil-square-o fa-lg"></i> Edit
-              <% end %>
-            </p>
-            <p>
-              <%= link_to [song.user, song], method: :delete, data: { confirm: 'Are you sure to delete this concert information?' }, class: 'btn-sm btn-danger'  do %>
-                <i class="fa fa-trash-o fa-lg"></i> Delete
-              <% end %>
-            </p>
+            <%= link_to edit_user_song_path(song.user, song) do %>
+              <i class="fa fa-pencil-square-o fa-lg"></i>
+            <% end %>
+            <%= link_to [song.user, song], method: :delete, data: { confirm: 'Are you sure to delete this concert information?' } do %>
+              <i class="fa fa-trash-o fa-lg"></i>
+            <% end %>
           <% end %>
         </div>
       </div>
