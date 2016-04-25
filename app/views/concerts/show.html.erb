@@ -26,9 +26,9 @@
 </div>
 <div class="row" style="border-top: 5px solid #5bc0de;">
   <div class="col-md-8 col-md-offset-2 text-center">
-    <h3 class="space-top"><%= @concert.title %></h3>
+    <h3 class="space-top-sm"><%= @concert.title %></h3>
     <p><%= link_to @concert.user.username, [@concert.user, @concert.user.profiles.first] %></p>
-    <p class="lead"><%= @concert.show_date.strftime("%B %e %Y") %>, <%= @concert.show_time.strftime("%l:%M %P") %></p>
+    <p class="lead" style="margin-bottom: 10px;"><%= @concert.show_date.strftime("%B %e %Y") %>, <%= @concert.show_time.strftime("%l:%M %P") %></p>
   </div>
 </div>
 <p>
