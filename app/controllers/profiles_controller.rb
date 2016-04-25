@@ -5,6 +5,10 @@ class ProfilesController < ApplicationController
   before_action :authorize_user, except: :show
   before_action :allow_one_profile, only: [:new, :create]
 
+  def index
+    @profiles = @user.favorites.map {|f| Profile.find_by(id: f.profile_id) }
+  end
+
   def new
     @profile = Profile.new
   end

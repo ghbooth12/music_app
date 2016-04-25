@@ -1,0 +1,18 @@
+<% @title = "#{@user.username} | Saved Musicians" %>
+<div class="row" id="user-sidebar">
+  <div class="col-md-4">
+    <%= render 'profiles/sidebar' %>
+  </div> <!-- /.col-md-4 -->
+
+  <div class="col-md-8 space-top">
+    <div class="text-right" style="color: #7C8792;">
+      <small><i class="fa fa-music" aria-hidden="true"></i> concerts </small> |
+      <small><i class="fa fa-bookmark" aria-hidden="true"></i> bookmarks </small>
+    </div>
+    <% if @profiles.any? %>
+      <%= render 'welcome/musicians', { profiles: @profiles } %>
+    <% else %>
+      <p>No saved musicians...</p>
+    <% end %>
+  </div> <!-- /.col-md-8 -->
+</div>

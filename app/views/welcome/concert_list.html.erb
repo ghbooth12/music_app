@@ -1,8 +1,11 @@
 <% @title = "Musicians | Discover new music" %>
 <div id="concert-list" class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-10 col-md-offset-1">
     <div class="page-header">
       <h2 class="text-center">Concerts</h2>
+    </div>
+    <div class="text-right" style="color: #7C8792; margin-bottom: 10px;">
+      <small><i class="fa fa-bookmark" aria-hidden="true"></i> bookmarks </small>
     </div>
     <%= render 'concerts', { concerts: Concert.all } %>
   </div>

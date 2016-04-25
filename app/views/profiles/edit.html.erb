@@ -1,13 +1,7 @@
 <div class="row" id="user-sidebar">
   <div class="col-md-4">
-    <div class="list-group">
-      <%= link_to 'Saved Music', '#', class: "list-group-item" %>
-      <%= link_to 'My Musician Profile', user_profile_path(@profile.user, @profile), class: "list-group-item active" %>
-      <% if premium_or_admin?(@user) %>
-        <%= link_to 'Upload My Music', user_songs_path(@user), class: "list-group-item" %>
-      <% end %>
-    </div> <!-- /.list-group -->
-  </div> <!-- /.col-md-5 -->
+    <%= render 'profiles/sidebar' %>
+  </div> <!-- /.col-md-4 -->
 
   <div class="col-md-8">
     <div class="row">
