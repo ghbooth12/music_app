@@ -8,22 +8,26 @@
         <span><%= link_to 'Delete', @genre, method: :delete, data: { confirm: "Are you sure to delete this genre?" } unless @genre.profiles.any? || @genre.concerts.any? %></span>
       <% end %>
     </div>
-    <table class="table">
-      <tr>
-        <th>Song</th>
-        <th>Musician</th>
-        <th>Upcoming Concerts</th>
-      </tr>
+    <div class="text-right" style="color: #7C8792; margin-bottom: 10px;">
+      <small><i class="fa fa-music" aria-hidden="true"></i> No. concerts </small> |
+      <small><i class="fa fa-bookmark" aria-hidden="true"></i> No. bookmarks </small>
+    </div>
 
-      <% @genre.profiles.each do |profile| %>
-        <tr>
-          <td>Example</td>
-          <td><%= link_to profile.user.username, [profile.user, profile] %></td>
-          <td><%= profile.user.concerts.count %></td>
-        </tr>
+    <div class="panel panel-default">
+      <div class="panel-heading">Musicians</div>
+      <% if @genre.profiles.any? %>
+        <%= render 'welcome/musicians', { profiles: @genre.profiles } %>
+      <% else %>
+        <p class="margin-left-sm" style="padding: 5px 0;">No musicians for this tag</p>
       <% end %>
-    </table>
-
-    <%= render partial: 'concerts/table', locals: { concerts: @genre.concerts } %>
+    </div> <!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading">Concerts</div>
+      <% if @genre.concerts.any? %>
+        <%= render 'welcome/concerts', { concerts: @genre.concerts } %>
+      <% else %>
+        <p class="margin-left-sm" style="padding: 5px 0;">No concerts for this tag</p>
+      <% end %>
+    </div> <!-- /.panel -->
   </div>
 </div>
