@@ -1,3 +1,7 @@
-<%= link_to [concert, Bookmark.new], method: :post, remote: true, class: 'icon-empty' do %>
+<% if current_user %>
+  <%= link_to [concert, Bookmark.new], method: :post, remote: true, class: 'icon-empty' do %>
+    <i class="fa fa-bookmark-o" aria-hidden="true"></i> <%= concert.bookmarks.count %>
+  <% end %>
+<% else %>
   <i class="fa fa-bookmark-o" aria-hidden="true"></i> <%= concert.bookmarks.count %>
 <% end %>

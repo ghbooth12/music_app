@@ -2,24 +2,29 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="page-header">
-      <h2 class="text-center"><%= @tag.name %></h2>
+      <h2 class="text-center"><small><i class="fa fa-tag" aria-hidden="true"></i>
+    </small><%= @tag.name %></h2>
     </div>
-    <table class="table">
-      <tr>
-        <th>Song</th>
-        <th>Musician</th>
-        <th>Upcoming Concerts</th>
-      </tr>
+    <div class="text-right" style="color: #7C8792; margin-bottom: 10px;">
+      <small><i class="fa fa-music" aria-hidden="true"></i> No. concerts </small> |
+      <small><i class="fa fa-bookmark" aria-hidden="true"></i> No. bookmarks </small>
+    </div>
 
-      <% @tag.profiles.each do |profile| %>
-        <tr>
-          <td>Example</td>
-          <td><%= link_to profile.user.username, [profile.user, profile] %></td>
-          <td><%= profile.user.concerts.count %></td>
-        </tr>
+    <div class="panel panel-default">
+      <div class="panel-heading">Musicians</div>
+      <% if @tag.profiles.any? %>
+        <%= render 'welcome/musicians', { profiles: @tag.profiles } %>
+      <% else %>
+        <p class="margin-left-sm" style="padding: 5px 0;">No musicians for this tag</p>
       <% end %>
-    </table>
-
-    <%= render partial: 'concerts/table', locals: { concerts: @tag.concerts } %>
-  </div>
+    </div> <!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading">Concerts</div>
+      <% if @tag.concerts.any? %>
+        <%= render 'welcome/concerts', { concerts: @tag.concerts } %>
+      <% else %>
+        <p class="margin-left-sm" style="padding: 5px 0;">No concerts for this tag</p>
+      <% end %>
+    </div> <!-- /.panel -->
+  </div> <!-- /.col-md-8 -->
 </div>

@@ -1,0 +1,17 @@
+<table class="table">
+  <% profiles.each do |profile| %>
+    <tr>
+      <td>
+        <% if profile.avatar? %>
+          <%= image_tag(profile.avatar.xs.url, id: 'photo') %>
+        <% else %>
+          <%= image_tag("/fallback/default_xs.png", id: 'photo') %>
+        <% end %>
+        <%= link_to profile.user.username, [profile.user, profile] %>
+      </td>
+      <td><i class="fa fa-music" aria-hidden="true"></i> <%= profile.user.concerts.count %></td>
+      <td><i class="fa fa-bookmark" aria-hidden="true"></i> <%= profile.user.bookmarks.count %></td>
+      <td><i class="fa fa-heart" aria-hidden="true"></i> <%= profile.favorites.count %></td>
+    </tr>
+  <% end %>
+</table>

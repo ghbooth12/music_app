@@ -6,7 +6,7 @@
 <div class="row">
   <div class="pull-left">
     <div id="bookmark">
-      <% if bookmark = current_user.bookmark_for(@concert) %>
+      <% if current_user && bookmark = current_user.bookmark_for(@concert) %>
         <%= render 'bookmarks/undo', { concert: @concert, bookmark: bookmark } %>
       <% else %>
         <%= render 'bookmarks/like', { concert: @concert } %>

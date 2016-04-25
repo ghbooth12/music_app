@@ -3,7 +3,7 @@
   <div class="row" style="margin-bottom: 10px;">
     <div class="pull-left">
       <div id="favorite">
-        <% if favorite = current_user.favorite_for(@profile) %>
+        <% if current_user && favorite = current_user.favorite_for(@profile) %>
           <%= render 'favorites/undo', { profile: @profile, favorite: favorite  } %>
         <% else %>
           <%= render 'favorites/like', { profile: @profile } %>
@@ -50,7 +50,7 @@
 
       <div class="row space-top">
         <h3>About</h3>
-        <p><%= @profile.body %></p>
+        <pre class="pre-style"><%= @profile.body %></pre>
       </div>
 
       <div class="row space-top">

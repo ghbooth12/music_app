@@ -1,15 +1,13 @@
-<div class="jumbotron">
-  <h1><i class="fa fa-bluetooth"></i> Music App</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor mollit anim id est laborum.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+<div style="border-top: 5px solid #607D8B;">
+  <%= render partial: 'genres/list' %>
+
+  <section id="all-tags">
+    <h2><small><i class="fa fa-tag" aria-hidden="true"></i>
+  </small> Tags</h2>
+    <%= render partial: 'tags/list', locals: { tags: visibile_tags } %>
+  </section>
 </div>
 
-<%= render partial: 'genres/list' %>
-
-<section id="all-tags">
-  <h2><small><i class="fa fa-tag" aria-hidden="true"></i>
-</small> Tags</h2>
-  <%= render partial: 'tags/list', locals: { tags: visibile_tags } %>
-</section>
-
-<%= render partial: 'concerts/search', locals: { concerts: @concerts } %>
+<div class="space-top" style="border-top: 5px solid #607D8B;">
+  <%= render partial: 'concerts/search', locals: { concerts: @concerts } %>
+</div>
