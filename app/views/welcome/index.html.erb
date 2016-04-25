@@ -1,13 +1,13 @@
-<div style="border-top: 5px solid #607D8B;">
-  <%= render partial: 'genres/list' %>
+<section id="main-page">
+  <div style="border-top: 5px solid #607D8B;">
+    <%= render partial: 'genres/list' %>
 
-  <section id="all-tags">
     <h2><small><i class="fa fa-tag" aria-hidden="true"></i>
-  </small> Tags</h2>
+    </small> Tags</h2>
     <%= render partial: 'tags/list', locals: { tags: visibile_tags } %>
-  </section>
-</div>
+  </div>
 
-<div class="space-top" style="border-top: 5px solid #607D8B;">
-  <%= render partial: 'concerts/search', locals: { concerts: @concerts } %>
-</div>
+  <div class="space-top" style="border-top: 5px solid #607D8B;">
+    <%= render partial: 'concerts/search', locals: { concerts: @concerts } %>
+  </div>
+</section>

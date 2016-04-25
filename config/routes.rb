@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'concerts' => 'welcome#concert_list', as: :concert_list
 
   resources :users, only: [] do
-    resources :profiles, except: [:index, :destroy]
-    resources :concerts, except: :index
+    resources :profiles, except: :destroy
+    resources :concerts
     resources :songs, except: :show
 
     resources :profiles, only: [] do

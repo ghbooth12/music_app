@@ -10,7 +10,7 @@ class Concert < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode, if: :full_address_changed?
 
-  validates :title, presence: true, length: { in: 3..30 }
+  validates :title, presence: true, length: { in: 3..40 }
   validates :show_date, presence: true
   validates :show_time, presence: true
   validates :location_name, presence: true, length: { in: 3..30 }

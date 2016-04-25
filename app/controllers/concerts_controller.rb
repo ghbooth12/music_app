@@ -4,6 +4,10 @@ class ConcertsController < ApplicationController
   before_action :authorize_user, except: :show
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @concerts = @user.bookmarks.map {|b| Concert.find_by(id: b.concert_id) }
+  end
+
   def new
     @concert = Concert.new
   end

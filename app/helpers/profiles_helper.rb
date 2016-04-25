@@ -16,9 +16,9 @@ module ProfilesHelper
   end
 
   def visible_profiles
-    # Profile.all.reject do |p|
-    #   soundcloud_widget(p.soundcloud_url).blank?
-    # end
-    Profile.all
+    Profile.all.reject do |p|
+      soundcloud_widget(p.soundcloud_url).blank?
+    end
+    # Profile.all
   end
 end
