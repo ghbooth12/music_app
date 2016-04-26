@@ -13,7 +13,7 @@
     </div>
 
     <div class="row space-top">
-      <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts } %>
+      <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts.by_show_date.by_show_time } %>
     </div>
   </div> <!-- /.col-md-8 -->
 </div>

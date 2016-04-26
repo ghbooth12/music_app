@@ -7,6 +7,6 @@
     <div class="text-right" style="color: #7C8792; margin-bottom: 10px;">
       <small><i class="fa fa-bookmark" aria-hidden="true"></i> bookmarks </small>
     </div>
-    <%= render 'concerts', { concerts: Concert.all } %>
+    <%= render 'concerts', { concerts: Concert.upcoming_date.by_show_date.by_show_time } %>
   </div>
 </div>

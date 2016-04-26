@@ -11,6 +11,7 @@
       <td><%= concert.show_date.strftime("%D") %>, <%= concert.show_time.strftime("%l:%M %P") %></td>
       <td><%= link_to concert.title, [concert.user, concert] %></td>
       <td><%= concert.location_name %> <small>(<%= concert.city %> <%= concert.state %></small>)</td>
+      <td><i class="fa fa-bookmark" aria-hidden="true"></i> <%= concert.bookmarks.count %></td>
       <% if user_is_authorized?(concert) %>
         <td class="text-left">
           <%= link_to edit_user_concert_path(concert.user, concert) do %>

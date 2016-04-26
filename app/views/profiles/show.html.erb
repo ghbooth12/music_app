@@ -54,7 +54,7 @@
       </div>
 
       <div class="row space-top">
-        <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts } %>
+        <%= render partial: 'concerts/list', locals: { profile: @profile, concerts: @profile.user.concerts.upcoming_date.by_show_date.by_show_time } %>
       </div>
 
       <!-- premium user's recommend songs -->

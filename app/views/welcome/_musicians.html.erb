@@ -10,7 +10,7 @@
         <%= link_to profile.user.username, [profile.user, profile] %>
       </td>
       <td><i class="fa fa-music" aria-hidden="true"></i> <%= profile.user.concerts.count %></td>
-      <td><i class="fa fa-bookmark" aria-hidden="true"></i> <%= profile.user.bookmarks.count %></td>
+      <td><i class="fa fa-bookmark" aria-hidden="true"></i> <%= bookmarks_count(profile.user) %></td>
       <td><i class="fa fa-heart" aria-hidden="true"></i> <%= profile.favorites.count %></td>
     </tr>
   <% end %>
