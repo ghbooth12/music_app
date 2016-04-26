@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414035222) do
+ActiveRecord::Schema.define(version: 20160426204903) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,12 +68,13 @@ ActiveRecord::Schema.define(version: 20160414035222) do
     t.string   "twitter_url"
     t.string   "youtube_url"
     t.string   "soundcloud_url"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
     t.text     "body"
     t.string   "avatar"
     t.integer  "genre_id"
+    t.integer  "favorites_count", default: 0
   end
 
   add_index "profiles", ["genre_id"], name: "index_profiles_on_genre_id"

@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   def index
     params[:miles] ||= 20
     if params[:search]
-      @concerts = Concert.near(params[:search], params[:miles])
+      @concerts = Concert.upcoming_date.near(params[:search], params[:miles])
       @hash = Gmaps4rails.build_markers(@concerts) do |concert, marker|
         marker.lat concert.latitude
         marker.lng concert.longitude

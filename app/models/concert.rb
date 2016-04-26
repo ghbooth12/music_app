@@ -26,6 +26,10 @@ class Concert < ActiveRecord::Base
   # validates_format_of :location_url, :with => /((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/ix, allow_blank: true
   validates :genre_id, presence: true
 
+  scope :by_show_date, -> { order('show_date ASC') }
+  scope :by_show_time, -> { order('show_time ASC') }
+  scope :upcoming_date, -> { where(["show_date >= ?", Date.today]) }
+
   def full_address
     "#{address_1}, #{city}, #{state}"
   end

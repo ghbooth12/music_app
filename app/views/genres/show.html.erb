@@ -23,8 +23,8 @@
     </div> <!-- /.panel -->
     <div class="panel panel-default">
       <div class="panel-heading">Concerts</div>
-      <% if @genre.concerts.any? %>
-        <%= render 'welcome/concerts', { concerts: @genre.concerts } %>
+      <% if @genre.concerts.upcoming_date.any? %>
+        <%= render 'welcome/concerts', { concerts: @genre.concerts.upcoming_date.by_show_date.by_show_time } %>
       <% else %>
         <p class="margin-left-sm" style="padding: 5px 0;">No concerts for this tag</p>
       <% end %>
