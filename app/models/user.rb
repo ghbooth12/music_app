@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+  
   after_initialize :init
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

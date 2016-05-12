@@ -47,7 +47,7 @@ class SongsController < ApplicationController
   private
 
   def set_user # all
-    @user = User.find(params[:user_id])
+    @user = User.friendly.find(params[:user_id])
   end
 
   def authorize_user # all

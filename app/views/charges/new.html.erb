@@ -15,9 +15,9 @@
           </div>
           <div class="panel-body">
             <ul style="list-style: none; padding-left: 0;">
-              <li><span class="glyphicon glyphicon-ok"></span> It is easy and fast</li>
-              <li><span class="glyphicon glyphicon-ok"></span> Creates priate wikis</li>
-              <li><span class="glyphicon glyphicon-ok"></span> Lorem ipsum dolor sit</li>
+              <li><span class="glyphicon glyphicon-ok"></span> Upload your favorite songs</li>
+              <li><span class="glyphicon glyphicon-ok"></span> Become famous</li>
+              <li><span class="glyphicon glyphicon-ok"></span> Introduce more songs</li>
             </ul>
           </div>
         </div>
@@ -25,7 +25,7 @@
 
       <div class="col-md-6">
         <h3>Upgrade to Premium</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        <p>You can upload your songs from SoundCloud, while standard members have their one latest song uploaded by default.</p>
         <% if current_user.standard? %>
           <%= form_tag charges_path, class: 'pull-right' do %>
             <script class='stripe-button' src='https://checkout.stripe.com/checkout.js'
