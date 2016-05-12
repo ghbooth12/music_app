@@ -16,7 +16,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Musicians</div>
       <% if @genre.profiles.any? %>
-        <%= render 'welcome/musicians', { profiles: @genre.profiles } %>
+        <%= render 'welcome/musicians', { profiles: @genre.profiles.by_favorites } %>
       <% else %>
         <p class="margin-left-sm" style="padding: 5px 0;">No musicians for this tag</p>
       <% end %>
