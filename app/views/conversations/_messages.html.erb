@@ -1,0 +1,32 @@
+<% @receipts.each do |receipt| %>
+  <% message = receipt.message %>
+  <div class="media">
+    <div class="row" style="font-size: 80%; margin-bottom: 15px;">
+      <div class="col-md-6">
+        From:
+        <% p = message.sender %>
+        <%= link_to p.username, user_profile_path(p, p.profiles.first) %>
+        <br>
+        To:
+        <% recipients = message.recipients.reject{|p| p == message.sender} %>
+        <% recipients.each do |p| %>
+          <%= link_to p.username, user_profile_path(p, p.profiles.first) %>
+          <% unless p == recipients.last %>
+            |
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <%= message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %>
+      </div>
+    </div>
+    <!-- <div class="media-left">
+      <a href="#"><img src="http://placehold.it/64x64" alt="..." class="media-object"></a>
+    </div> -->
+    <div class="media-body">
+      <h5 class="media-heading"><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= message.subject %></h5>
+      <pre class="pre-style"><%= message.body %></pre>
+    </div>
+  </div>
+  <hr>
+<% end %>

@@ -92,7 +92,9 @@ a:hover, a:focus, table a:not(.btn):hover, .table a:not(.btn):focus {
 .inlined {
   display: inline-block;
 }
-
+.blocked {
+  display: block;
+}
 
 // Global Style
 body {

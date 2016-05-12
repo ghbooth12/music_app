@@ -1,0 +1,22 @@
+<div class="row space-top">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p><%= link_to fa_icon('pencil-square-o lg', 'aria-hidden' => true, text: 'Compose'), new_conversation_path, class: 'btn btn-success' %></p>
+        <%= render 'mailbox/folders' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% if is_conversation %>
+          <%= render 'conversations/form' %>
+        <% else %>
+          <%= render partial: 'conversations/conversation', collection: messages  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

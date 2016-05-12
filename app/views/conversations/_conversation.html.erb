@@ -1,0 +1,30 @@
+<div class="media">
+  <div class="row" style="font-size: 80%; margin-bottom: 15px;">
+    <div class="col-md-6">
+        From:
+        <% p = conversation.originator %>
+        <%= link_to p.username, user_profile_path(p, p.profiles.first) %>
+        <br>
+        To:
+        <% recipients = conversation.recipients.reject{|p| p == conversation.originator} %>
+        <% recipients.each do |p| %>
+          <%= link_to p.username, user_profile_path(p, p.profiles.first) %>
+          <% unless p == recipients.last %>
+            |
+          <% end %>
+        <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %>
+    </div>
+  </div>
+  <!-- <div class="media-left">
+    <a href="#"><img src="http://placehold.it/64x64" alt="..." class="media-object"></a>
+  </div> -->
+  <div class="media-body">
+    <h5 class="media-heading"><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= conversation.subject %></h5>
+    <pre class="pre-style"><%= truncate conversation.messages.last.body, length: 145 %></pre>
+    <%= link_to "View All", conversation_path(conversation), class: 'btn-sm btn-info  pull-right' %>
+  </div>
+</div>
+<hr>
