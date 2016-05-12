@@ -7,10 +7,12 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = @user.favorites.map {|f| Profile.find_by(id: f.profile_id) }
+    @active = :profiles
   end
 
   def new
     @profile = Profile.new
+    @active = :new_profile
   end
 
   def create
@@ -29,6 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @active = :edit_profile
   end
 
   def update

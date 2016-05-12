@@ -6,6 +6,7 @@ class ConcertsController < ApplicationController
 
   def index
     @concerts = @user.bookmarks.map {|b| Concert.find_by(id: b.concert_id) }
+    @active = :concerts
   end
 
   def new

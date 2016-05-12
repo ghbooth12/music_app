@@ -5,6 +5,7 @@ class SongsController < ApplicationController
 
   def index
     @songs = @user.songs
+    @active = :songs
   end
 
   def new
