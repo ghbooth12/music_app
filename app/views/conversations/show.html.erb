@@ -23,7 +23,7 @@
       <div class="panel-footer">
         <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
           <div class="form-group">
-            <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: 'form-control' %>
+            <%= f.text_area :body, placeholder: "Reply Message", rows: 8, class: 'form-control' %>
           </div>
           <%= f.submit "Reply", class: 'btn btn-success pull-right' %>
         <% end %>

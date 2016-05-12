@@ -1,43 +1,16 @@
 <div class="list-group">
-  <% if current_page?("/users/#{@user.id}/profiles") %>
-    <%= link_to user_profiles_path(@user), class: "list-group-item active" do %>
-      <i class="fa fa-heart" aria-hidden="true"></i></i> Saved Musicians
-    <% end %>
-  <% else %>
-    <%= link_to user_profiles_path(@user), class: "list-group-item" do %>
-      <i class="fa fa-heart" aria-hidden="true"></i></i> Saved Musicians
-    <% end %>
-  <% end %>
-  <% if current_page?("/users/#{@user.id}/concerts") %>
-    <%= link_to user_concerts_path(@user), class: "list-group-item active" do %>
-      <i class="fa fa-bookmark" aria-hidden="true"></i> Saved Concerts
-    <% end %>
-  <% else %>
-    <%= link_to user_concerts_path(@user), class: "list-group-item" do %>
-      <i class="fa fa-bookmark" aria-hidden="true"></i> Saved Concerts
-    <% end %>
-  <% end %>
+  <%= link_to fa_icon('heart', text: 'Saved Musicians'), user_profiles_path(@user), class: "list-group-item #{active_page(:profiles)}" %>
+
+  <%= link_to fa_icon('bookmark', text: 'Saved Concerts'), user_concerts_path(@user), class: "list-group-item #{active_page(:concerts)}" %>
   <hr style="margin: 10px 30px 10px 15px;">
 
   <% if @user.profiles.blank? %>
-    <% if current_page?("/users/#{@user.id}/profiles/new") %>
-      <%= link_to 'New Musician Profile', new_user_profile_path(@user), class: "list-group-item active" %>
-    <% else %>
-      <%= link_to 'New Musician Profile', new_user_profile_path(@user), class: "list-group-item" %>
-    <% end %>
+    <%= link_to 'New Musician Profile', new_user_profile_path(@user), class: "list-group-item #{active_page(:new_profile)}" %>
   <% else %>
-    <% if current_page?("/users/#{@user.id}/profiles/#{@user.profiles.first.id}/edit") %>
-      <%= link_to 'My Musician Profile', edit_user_profile_path(@user, @user.profiles.first), class: "list-group-item active" %>
-    <% else %>
-      <%= link_to 'My Musician Profile', edit_user_profile_path(@user, @user.profiles.first), class: "list-group-item" %>
-    <% end %>
+    <%= link_to 'My Musician Profile', edit_user_profile_path(@user, @user.profiles.first), class: "list-group-item #{active_page(:edit_profile)}" %>
   <% end %>
-  
+
   <% if premium_or_admin?(@user) %>
-    <% if current_page?("/users/#{@user.id}/songs") %>
-      <%= link_to 'Upload My Music', user_songs_path(@user), class: "list-group-item active" %>
-    <% else %>
-      <%= link_to 'Upload My Music', user_songs_path(@user), class: "list-group-item" %>
-    <% end %>
+      <%= link_to 'Upload My Music', user_songs_path(@user), class: "list-group-item #{active_page(:songs)}" %>
   <% end %>
-</div> <!-- /.list-group -->
+</div>
