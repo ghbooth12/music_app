@@ -3,9 +3,9 @@
     <tr>
       <td>
         <% if profile.avatar? %>
-          <%= image_tag(profile.avatar.xs.url, id: 'photo') %>
+          <%= image_tag(profile.avatar.xs.url) %>
         <% else %>
-          <%= image_tag("/fallback/default_xs.png", id: 'photo') %>
+          <%= image_tag("/fallback/default_xs.png") %>
         <% end %>
         <%= link_to profile.user.username, [profile.user, profile] %>
       </td>

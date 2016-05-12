@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   enum role: [:standard, :premium, :admin]
 
+  acts_as_messageable
+
   def init
     self.role ||= :standard if self.has_attribute? :role
   end
@@ -25,5 +27,13 @@ class User < ActiveRecord::Base
 
   def bookmark_for(concert)
     self.bookmarks.find_by(concert_id: concert.id)
+  end
+
+  def mailboxer_name
+    self.username
+  end
+
+  def mailboxer_email(object)
+    self.email
   end
 end
