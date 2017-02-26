@@ -34,3 +34,7 @@ $(document).ready(function(){
     reader.readAsDataURL(file);
   });
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

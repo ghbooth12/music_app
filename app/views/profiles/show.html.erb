@@ -37,7 +37,7 @@
             <small class="social-btn"><%= render 'list' %></small>
           </h2>
           <p>
-            <%= link_to @profile.genre.name, @profile.genre, class: 'btn-sm btn-primary' %>
+            <%= link_to @profile.genre.name, @profile.genre, class: 'btn-sm btn-primary', data: {toggle: "tooltip", placement: "top"}, title: "Genre" %>
             <%= render partial: 'tags/list', locals: { tags: @profile.tags } %>
           </p>
 
