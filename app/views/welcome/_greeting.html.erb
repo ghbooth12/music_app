@@ -3,14 +3,12 @@
     <div class="row">
       <div class="col-xs-12">
         <h3>Wecolme to MusicApp</h3>
-        <p>Music app is a production quality app that allows users to search local concerts and discover new musicians. Musicians can post their local concerts and songs to public</p>
+        <p>Music app is a production quality app that allows users to search local concerts and discover new musicians. Musicians can post their local concerts and songs to public.</p>
 
-        <div class="well">
-          <p class="lead">To see in action, you can use test user account to log in.</p>
-          <%= link_to "Click to log in", auto_sign_path, class: 'btn btn-success' %>          
+        <div class="well text-center">
+          <p>To see in action, you can use test user account to log in.</p>
+          <%= link_to "Click to log-in automatically", auto_sign_path, class: 'btn btn-success' %>
         </div>
-
-        <p>Premium member of musicians can post their songs unlimited. Any tier of members can search by genres and tags, and listen to new music. Also just entering a zip code will show the list of local concerts.</p>
       </div> <!-- .col-xs-12 -->
     </div> <!-- .row -->
 
@@ -36,7 +34,24 @@
               </li>
               <li class="list-group-item">
                 <i class="fa fa-check"></i>
-                Like/Unlinke musicians at the left top corner of the <%= link_to "musician's profile", user_profile_path(@john, @john.profiles.first) %>. Same thing for the <%= link_to "concerts", user_concert_path(@john, @john.concerts.first) %> too!
+                Send messages to other user.
+                <%= link_to mailbox_inbox_path do %>
+                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <% end %>
+              </li>
+              <li class="list-group-item">
+                <i class="fa fa-check"></i>
+                Like/Unlike musicians at the left top corner of musician's profile.
+                <%= link_to user_profile_path(@john, @john.profiles.first) do %>
+                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <% end %>
+              </li>
+              <li class="list-group-item">
+                <i class="fa fa-check"></i>
+                Same thing for the concerts too! Like/Unlike concerts.
+                <%= link_to user_concert_path(@john, @john.concerts.first) do %>
+                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <% end %>
               </li>
               <li class="list-group-item">
                 <i class="fa fa-check"></i>
@@ -67,20 +82,55 @@
 
       <div class="col-xs-6">
         <div class="panel">
-          <div class="panel-heading text-center">
-            <h4><strong>Simple Plan</strong></h4>
+          <div class="panel-heading">
+            <h4><strong>For Musicians</strong></h4>
           </div>
-          <div class="panel-body text-center">
-            <p class="lead"><strong>$8.99 / month</strong>
-            <ul class="list-group list-group-flush text-center">
-              <li class="list-group-item">1 Free Domain</li>
-              <li class="list-group-item">5GB Disk Space</li>
-              <li class="list-group-item">25GB Bandwidth</li>
-              <li class="list-group-item">20 Email Accounts</li>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <i class="fa fa-check"></i>
+                Link your SoundCloud in the profile page. Your most recent song will be posted on your profile!
+                <%= link_to edit_user_profile_path(@tester, @tester.profiles.first) do %>
+                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <% end %>
+              </li>
+              <li class="list-group-item">
+                <i class="fa fa-check"></i>
+                Choose genre of your music and add tags that represent your music style!
+                <%= link_to edit_user_profile_path(@tester, @tester.profiles.first) do %>
+                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <% end %>
+              </li>
+              <li class="list-group-item">
+                <i class="fa fa-check"></i>
+                Post concerts and show the people around the country.
+                <%= link_to new_user_concert_path(@tester) do %>
+                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <% end %>
+              </li>
+            </ul>
+            <br>
+
+            <h4>For Premium Musicians</h4>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <i class="fa fa-check"></i>
+                Upgrade your membership by paying just $15. You can cancel at any time. (Test User is already a premium level for demonstration. To see this in action, log out and click the button.)
+                <%= link_to new_charge_path do %>
+                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <% end %>
+              </li>
+              <li class="list-group-item">
+                <i class="fa fa-check"></i>
+                List multiple songs in the profile. Songs are all linked from SoundCloud.
+                <%= link_to user_songs_path(@tester) do %>
+                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <% end %>
+              </li>
             </ul>
           </div>
           <div class="panel-footer">
-            <a class="btn btn-lg btn-block btn-primary" href="#">BUY NOW!</a>
+            <%= link_to "Go to musician profile", user_profile_path(@tester, @tester.profiles.first), class: "btn btn-block btn-info"  %>
           </div>
         </div> <!-- .panel -->
       </div> <!-- .col-xs-6 -->

@@ -1,8 +1,9 @@
 <% @title = "Genre | #{@genre.name}" %>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <div class="page-header">
-      <h2 class="text-center"><%= @genre.name %></h2>
+    <div class="page-header text-center">
+      <h2><%= @genre.name %></h2>
+      <p class="text-faded">See all of our <%= @genre.name %> musicians and concerts.</p>
       <% if user_is_admin? %>
         <span><%= link_to 'Edit', edit_genre_path(@genre) %></span>
         <span><%= link_to 'Delete', @genre, method: :delete, data: { confirm: "Are you sure to delete this genre?" } unless @genre.profiles.any? || @genre.concerts.any? %></span>
@@ -13,6 +14,7 @@
       <small><i class="fa fa-bookmark" aria-hidden="true"></i> bookmarks </small>
     </div>
 
+    <p class="text-faded"><%= @genre.name %> musician list with the number of his/her concerts, the number of his/her concerts being bookmarked, and the number of people who like the him/her.</p>
     <div class="panel panel-default">
       <div class="panel-heading">Musicians</div>
       <% if @genre.profiles.any? %>
@@ -21,6 +23,9 @@
         <p class="margin-left-sm" style="padding: 5px 0;">No musicians for this tag</p>
       <% end %>
     </div> <!-- /.panel -->
+    <br>
+
+    <p class="text-faded"><%= @genre.name %> concert list with the number of each concerts being bookmarked.</p>
     <div class="panel panel-default">
       <div class="panel-heading">Concerts</div>
       <% if @genre.concerts.upcoming_date.any? %>

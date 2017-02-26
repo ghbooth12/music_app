@@ -1,4 +1,5 @@
 <h3 class="inlined">Concerts Schedule</h3>
+<p class="text-faded">Click the concert titile. You can see the detail of the concert.</p>
 <% if user_is_authorized?(profile) %>
   <%= link_to new_user_concert_path(profile.user), class: 'btn-sm btn-success margin-left-sm' do %>
     <i class="fa fa-plus"></i> Add

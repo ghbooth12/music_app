@@ -10,6 +10,7 @@
         <% end %>
       </div>
     </div>
+    <small class="text-faded">Click to like this musician. You can check in your <%= link_to "user page", user_profiles_path(current_user) %>.</small>
     <div class="pull-right">
       <% if user_is_authorized?(@profile) %>
         <%= link_to edit_user_profile_path(@profile.user, @profile), class: 'btn-sm btn-info margin-left-sm' do %>
@@ -42,6 +43,7 @@
 
           <% if url = @profile.soundcloud_url %>
             <div class="soundcloud">
+              <p class="text-faded">Enjoy the latest song</p>
               <%= raw soundcloud_widget(url) %>
             </div>
           <% end %>
@@ -61,6 +63,8 @@
       <% if @user.premium? || @user.admin? %>
         <div class="row space-top-sm">
           <h3 class="inlined">Recommended Music</h3>
+          <p class="text-faded">Enjoy musician's recomended songs</p>
+
           <% if premium_or_admin?(@user) %>
             <%= link_to new_user_song_path(@user), class: 'btn-sm btn-success margin-left-xs' do %>
               <i class="fa fa-plus"></i> Add

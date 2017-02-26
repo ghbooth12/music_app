@@ -1,15 +1,16 @@
 <% @title = "Tag | #{@tag.name}" %>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <div class="page-header">
-      <h2 class="text-center"><small><i class="fa fa-tag" aria-hidden="true"></i>
-    </small><%= @tag.name %></h2>
+    <div class="page-header text-center">
+      <h2><small><i class="fa fa-tag" aria-hidden="true"></i> </small><%= @tag.name %></h2>
+      <p class="text-faded">See all of our musicians and concerts that play <%= @tag.name %> music.</p>
     </div>
     <div class="text-right" style="color: #7C8792; margin-bottom: 10px;">
       <small><i class="fa fa-music" aria-hidden="true"></i> concerts </small> |
       <small><i class="fa fa-bookmark" aria-hidden="true"></i> bookmarks </small>
     </div>
 
+    <p class="text-faded">The list of musicians who play <%= @tag.name %> music, with the number of his/her concerts, the number of his/her concerts being bookmarked, and the number of people who like the him/her.</p>
     <div class="panel panel-default">
       <div class="panel-heading">Musicians</div>
       <% if @tag.profiles.any? %>
@@ -18,6 +19,9 @@
         <p class="margin-left-sm" style="padding: 5px 0;">No musicians for this tag</p>
       <% end %>
     </div> <!-- /.panel -->
+    <br>
+
+    <p class="text-faded">The list of concerts that play <%= @tag.name %> music, with the number of each concerts being bookmarked.</p>
     <div class="panel panel-default">
       <div class="panel-heading">Concerts</div>
       <% if @tag.concerts.upcoming_date.any? %>
