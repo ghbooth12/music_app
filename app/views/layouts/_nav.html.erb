@@ -19,6 +19,21 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <li>
+            <%= link_to mailbox_inbox_path, data: {toggle: "tooltip", placement: "bottom"}, title: "Inbox" do %>
+              <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_profiles_path(current_user), data: {toggle: "tooltip", placement: "bottom"}, title: "Saved Musicians" do %>
+              <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_concerts_path(current_user), data: {toggle: "tooltip", placement: "bottom"}, title: "Saved Concerts" do %>
+              <i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+            <% end %>
+          </li>
           <% if user_profile && user_profile.avatar? %>
             <%= image_tag(user_profile.avatar.sm.url, id: 'photo') %>
           <% else %>
