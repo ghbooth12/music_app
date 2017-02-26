@@ -3,12 +3,12 @@
     <div class="col-md-6">
         From:
         <% p = conversation.originator %>
-        <%= link_to p.username, user_profile_path(p, p.profiles.first) %>
+        <%= check_profile(p) %>
         <br>
         To:
         <% recipients = conversation.recipients.reject{|p| p == conversation.originator} %>
         <% recipients.each do |p| %>
-          <%= link_to p.username, user_profile_path(p, p.profiles.first) %>
+          <%= check_profile(p) %>
           <% unless p == recipients.last %>
             |
           <% end %>
