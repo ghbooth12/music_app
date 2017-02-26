@@ -1,5 +1,6 @@
 <section id="genres">
   <h2 class="inlined"><small><i class="fa fa-sitemap" aria-hidden="true"></i></small> Genres</h2>
+  <p class="text-faded">Click the genre button that you like.</p>
   <% if user_is_admin? %>
     <span class="margin-left-sm"><%= link_to 'Add', new_genre_path %></span>
   <% end %>

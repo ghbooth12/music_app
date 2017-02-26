@@ -11,11 +11,20 @@ class WelcomeController < ApplicationController
         marker.infowindow concert.title
       end
     end
+
+    @john = User.find_by(username: "John Doe")
+    @tester = User.find_by(username: "Test User")
   end
 
   def musician_list
   end
 
   def concert_list
+  end
+
+  def auto_sign
+    tester = User.find_by(username: "Test User")
+    sign_in(tester)
+    redirect_to root_path
   end
 end
