@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'auto_sign' => 'welcome#auto_sign'
+  get 'demo_search' => 'welcome#demo_search'
 
   root 'welcome#index'
 end

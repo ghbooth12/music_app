@@ -3,10 +3,10 @@
 
 <section id="nearby-concerts-search">
   <h2><small><i class="fa fa-search" aria-hidden="true"></i></small> Nearby concerts</h2>
-  <p class="text-faded">Enter city name or zipcode. (e.g., san francisco, 94129)</p>
-  <%= form_tag root_path, method: :get do %>
+  <p class="text-faded">Enter city name or zipcode. (Click <%= link_to "Demo", demo_search_path, class: 'btn btn-success btn-xs' %> to see demonstration)</p>
+  <%= form_tag "/#search-btn", method: :get do %>
     <%= label_tag :search, nil, class: 'sr-only' %>
-    <%= text_field_tag :search, params[:search], placeholder: 'Zip Code or City' %>
+    <%= text_field_tag :search, params[:search], placeholder: 'City name or zip code' %>
     <span> within </span>
     <%= label_tag :miles, nil, class: 'sr-only' %>
     <%= number_field_tag :miles, params[:miles], in: 0..10000, step: 5 %>

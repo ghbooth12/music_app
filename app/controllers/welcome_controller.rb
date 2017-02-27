@@ -27,4 +27,8 @@ class WelcomeController < ApplicationController
     sign_in(tester)
     redirect_to root_path
   end
+
+  def demo_search
+    redirect_to "/?search=san+francisco#search-btn"
+  end
 end
