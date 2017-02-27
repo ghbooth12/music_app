@@ -16,7 +16,6 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
-  gem 'faker', '~> 1.7', '>= 1.7.2'
   gem 'factory_girl_rails'
 end
 
@@ -41,3 +40,4 @@ gem 'stripe'
 gem 'mailboxer'
 gem 'chosen-rails'
 gem 'friendly_id', '~> 5.1.0'
+gem 'faker', '~> 1.7', '>= 1.7.2'
