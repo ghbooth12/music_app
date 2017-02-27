@@ -1,3 +1,5 @@
+require 'faker'
+
 # Create User
 users = (1..5).to_a.map do |n|
   User.new(
