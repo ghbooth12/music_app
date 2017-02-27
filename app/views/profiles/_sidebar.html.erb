@@ -1,13 +1,13 @@
 <div class="list-group">
-  <%= link_to fa_icon('heart', text: 'Saved Musicians'), user_profiles_path(@user), class: "list-group-item #{active_page(:profiles)}" %>
+  <%= link_to fa_icon('heart', text: 'See Saved Musicians'), user_profiles_path(@user), class: "list-group-item #{active_page(:profiles)}" %>
 
-  <%= link_to fa_icon('bookmark', text: 'Saved Concerts'), user_concerts_path(@user), class: "list-group-item #{active_page(:concerts)}" %>
+  <%= link_to fa_icon('bookmark', text: 'See Saved Concerts'), user_concerts_path(@user), class: "list-group-item #{active_page(:concerts)}" %>
   <hr style="margin: 10px 30px 10px 15px;">
 
   <% if @user.profiles.blank? %>
-    <%= link_to 'New Musician Profile', new_user_profile_path(@user), class: "list-group-item #{active_page(:new_profile)}" %>
+    <%= link_to 'Edit New Musician Profile', new_user_profile_path(@user), class: "list-group-item #{active_page(:new_profile)}" %>
   <% else %>
-    <%= link_to 'My Musician Profile', edit_user_profile_path(@user, @user.profiles.first), class: "list-group-item #{active_page(:edit_profile)}" %>
+    <%= link_to 'Edit My Musician Profile', edit_user_profile_path(@user, @user.profiles.first), class: "list-group-item #{active_page(:edit_profile)}" %>
   <% end %>
 
   <% if premium_or_admin?(@user) %>

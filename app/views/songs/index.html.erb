@@ -6,7 +6,8 @@
     </div> <!-- /.col-md-4 -->
 
     <div class="col-md-8">
-      <h3 class="inlined">Song List</h3>
+      <h3>Song List</h3>
+      <p class="text-faded inlined">List of songs that you added. You have <%= @songs.length %> songs.</p>
       <% if premium_or_admin?(@user) %>
         <%= link_to new_user_song_path(@user), class: 'btn-sm btn-primary margin-left-xs' do %>
           <i class="fa fa-plus"></i> Add

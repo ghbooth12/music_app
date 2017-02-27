@@ -19,58 +19,46 @@
             <h4><strong>For Music Lovers</strong></h4>
           </div>
           <div class="panel-body">
-            <ul class="list-group">
+            <ul class="list-group hover-link">
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                See musicians & concerts by genres and tags
-                <a href="#genres-tags"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>
+                <a href="#genres-tags">
+                  <i class="fa fa-check"></i> See musicians & concerts by genres and tags. <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                </a>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Listen to the songs
                 <%= link_to user_profile_path(@john, @john.profiles.first) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> Listen to the songs. <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Send messages to other user.
                 <%= link_to mailbox_inbox_path do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> Send messages to other user. <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Like/Unlike musicians at the left top corner of musician's profile.
                 <%= link_to user_profile_path(@john, @john.profiles.first) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> Like/Unlike musicians at the left top corner of musician's profile. <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Same thing for the concerts too! Like/Unlike concerts.
                 <%= link_to user_concert_path(@john, @john.concerts.first) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> Same thing for the concerts too! Like/Unlike concerts. <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                See Liked musicians
                 <%= link_to user_profiles_path(@tester) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> See Liked musicians. <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Save Liked concerts
                 <%= link_to user_concerts_path(@tester) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> Save Liked concerts. <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Search concerts nearby by entering zipcode or city
-                <a href="#search-btn"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>
+                <a href="#search-btn">
+                  <i class="fa fa-check"></i> Search concerts nearby by entering zipcode or city. <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                </a>
               </li>
             </ul>
           </div>
@@ -86,45 +74,35 @@
             <h4><strong>For Musicians</strong></h4>
           </div>
           <div class="panel-body">
-            <ul class="list-group">
+            <ul class="list-group hover-link">
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Link your SoundCloud in the profile page. Your most recent song will be posted on your profile!
-                <%= link_to edit_user_profile_path(@tester, @tester.profiles.first) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <%= link_to edit_user_profile_path(@tester, @tester.profiles.first, anchor: "social-media") do %>
+                  <i class="fa fa-check"></i> Link your SoundCloud in the profile page. Your most recent song will be posted on your profile! <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Choose genre of your music and add tags that represent your music style!
-                <%= link_to edit_user_profile_path(@tester, @tester.profiles.first) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <%= link_to edit_user_profile_path(@tester, @tester.profiles.first, anchor: "genre-tag") do %>
+                  <i class="fa fa-check"></i> Choose genre of your music and add tags that represent your music style! <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Post concerts and show the people around the country.
                 <%= link_to new_user_concert_path(@tester) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> Post concerts and show the people around the country. <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
             </ul>
             <br>
 
             <h4>For Premium Musicians</h4>
-            <ul class="list-group">
+            <ul class="list-group hover-link">
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                Upgrade your membership by paying just $15. You can cancel at any time. (Test User is already a premium level for demonstration. To see this in action, log out and click the button.)
                 <%= link_to new_charge_path do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> Upgrade your membership by paying just $15. You can cancel at any time. (Test User is already a premium level for demonstration. To see this in action, log out and click the button.) <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <i class="fa fa-check"></i>
-                List multiple songs in the profile. Songs are all linked from SoundCloud.
                 <%= link_to user_songs_path(@tester) do %>
-                  <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> List multiple songs in the profile. Songs are all linked from SoundCloud. <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
               </li>
             </ul>

@@ -1,4 +1,4 @@
 <div class="form-group">
-  <%= f.label :tags %>
+  <%= f.label :tags, 'Tags (e.g., family, fun, spring)' %>
   <%= f.text_field :tags, class: 'form-control', placeholder: '(separated by commas)', value: tags.map(&:name).join(', ') %>
 </div>

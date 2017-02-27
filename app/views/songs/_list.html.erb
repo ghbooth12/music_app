@@ -4,10 +4,10 @@
         <%= raw premium_soundcloud(song.song_url) %>
         <div class="pull-right">
           <% if premium_or_admin?(@user) %>
-            <%= link_to edit_user_song_path(song.user, song) do %>
+            <%= link_to edit_user_song_path(song.user, song), data: {toggle: "tooltip", placement: "top"}, title: "Edit" do %>
               <i class="fa fa-pencil-square-o fa-lg"></i>
             <% end %>
-            <%= link_to [song.user, song], method: :delete, data: { confirm: 'Are you sure to delete this concert information?' } do %>
+            <%= link_to [song.user, song], method: :delete, data: {confirm: 'Are you sure to delete this concert information?', toggle: "tooltip", placement: "top"}, title: "Delete" do %>
               <i class="fa fa-trash-o fa-lg"></i>
             <% end %>
           <% end %>

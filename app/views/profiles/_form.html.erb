@@ -37,43 +37,45 @@
     </div>
   </div>
 
-  <h3 class="space-top">Social Media</h3>
+  <h3 id="social-media" class="space-top">Social Media</h3>
   <div class="form-group">
     <%= f.label :facebook_url, class: 'sr-only' %>
     <div class="input-group">
-      <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+      <span class="input-group-addon" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></span>
       <%= f.url_field :facebook_url, class: 'form-control', placeholder: 'http://www.facebook.com/my_profile' %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :twitter_url, class: 'sr-only' %>
     <div class="input-group">
-      <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+      <span class="input-group-addon" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></span>
       <%= f.url_field :twitter_url, class: 'form-control', placeholder: 'http://twitter.com/my_profile' %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :youtube_url, class: 'sr-only' %>
     <div class="input-group">
-      <span class="input-group-addon"><i class="fa fa-youtube-play"></i></span>
+      <span class="input-group-addon" data-toggle="tooltip" data-placement="top" title="YouTube"><i class="fa fa-youtube-play"></i></span>
       <%= f.url_field :youtube_url, class: 'form-control', placeholder: 'http://www.youtube.com/my_profile' %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :soundcloud_url, class: 'sr-only' %>
     <div class="input-group">
-      <span class="input-group-addon"><i class="fa fa-soundcloud"></i></span>
+      <span class="input-group-addon" data-toggle="tooltip" data-placement="top" title="SoundCloud"><i class="fa fa-soundcloud"></i></span>
       <%= f.url_field :soundcloud_url, class: 'form-control', placeholder: 'http://www.soundcloud.com/my_profile' %>
     </div>
   </div>
 
   <h3 class="space-top">Bio</h3>
+  <p class="text-faded">Tell us about youself.</p>
   <div class="form-group">
     <%= f.label :body, class: 'sr-only' %>
     <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: 'Enter your BIO' %>
   </div>
 
-  <h3 class="space-top">Genre &amp; Labels</h3>
+  <h3 id="genre-tag" class="space-top">Genre &amp; Tags</h3>
+  <p class="text-faded">Find genre and tags representing your music.</p>
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">
