@@ -1,28 +1,29 @@
-## Music App
+# Music App
 
-**For listeners,**
+Music app is a production quality app that allows users to search local concerts and discover new musicians. Also it allows musicians to post their local concerts and songs to public.
 
-* Discover new favorite songs/musicians
-* Search and enjoy the local concerts in your neighborhood
-
-**For musicians,**
-
-* Post your songs to public
-* Invite new people to your concerts in bars or restaurants
+Premium member of musicians can post their songs unlimited. Any tier of members can search by genres and tags, and listen to new music. Also just entering a city name and zip code will show the list of local concerts.
 
 
-### Profile
-Every user has one profile.
-```html
-<!-- Go to Musician's profile -->
-<%= link_to "musician's profile", user_profile_path(@john, @john.profiles.first) %>
+**For listeners**
 
-<!-- Go to concert's detail page -->
-<%= link_to "concerts", user_concert_path(@john, @john.concerts.first) %>
-```
+* See musicians & concerts by genres and tags
+* Listen to the songs
+* Send messages to other user.
+* Like/Unlike musicians at the left top corner of musician's profile.
+* Same thing for the concerts too! Like/Unlike concerts.
+* See Liked musicians
+* Save Liked concerts
+* Search concerts nearby by entering zipcode or city
 
-### concerts
-```ruby
-user.concerts # => user's own concerts
-concerts = user.bookmarks.map {|b| Concert.find_by(id: b.concert_id) } # => user's liked concerts
-```
+**For musicians**
+
+* Link your SoundCloud in the profile page. Your most recent song will be posted on your profile!
+* Choose genre of your music and add tags that represent your music style!
+* Post concerts and show the people around the country.
+
+**For Premium Musicians**
+
+* Upgrade your membership by paying just $15. You can cancel at any time. (Test User is already a premium level for demonstration. To see this in action, log out and click the button.) 
+* List multiple songs in the profile. Songs are all linked from SoundCloud.
+

@@ -91,7 +91,7 @@ address_array = {
 
 address_array.each do |name, address|
   Concert.create!(
-    title:         Faker::Space.constellation + " Concert",
+    title:         Faker::Space.moon + " Concert",
     show_date:     Faker::Date.between(1.year.from_now, 2.year.from_now),
     show_time:     Time.now,
     address_1:     address,
@@ -100,7 +100,7 @@ address_array.each do |name, address|
     location_name: Faker::Space.planet + " Hall",
     phone_number:  '1230001234',
     location_url:  "http://www.google.com",
-    body:          Faker::Lorem.paragraph,
+    body:          Faker::Lorem.paragraph(3),
     user:          users.sample,
     genre:         genres.sample,
     tags:          Tag.where(id: t_ids.sample(7))

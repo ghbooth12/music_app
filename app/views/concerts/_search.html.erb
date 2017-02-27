@@ -5,18 +5,19 @@
   <h2><small><i class="fa fa-search" aria-hidden="true"></i></small> Nearby concerts</h2>
   <p class="text-faded">Enter city name or zipcode. (e.g., san francisco, 94129)</p>
   <%= form_tag root_path, method: :get do %>
-  <%= label_tag :search, nil, class: 'sr-only' %>
-  <%= text_field_tag :search, params[:search], placeholder: 'Zip Code or City' %>
-  <span> within </span>
-  <%= label_tag :miles, nil, class: 'sr-only' %>
-  <%= number_field_tag :miles, params[:miles], in: 0..100, step: 5 %>
-  <span> miles </span>
-  <%= submit_tag "Search Near", class: 'btn-sm btn-default' %>
+    <%= label_tag :search, nil, class: 'sr-only' %>
+    <%= text_field_tag :search, params[:search], placeholder: 'Zip Code or City' %>
+    <span> within </span>
+    <%= label_tag :miles, nil, class: 'sr-only' %>
+    <%= number_field_tag :miles, params[:miles], in: 0..10000, step: 5 %>
+    <span> miles </span>
+    <%= submit_tag "Search Near", class: 'btn-sm btn-default' %>
   <% end %>
 
   <% if concerts.present? %>
     <div class="row" style="margin: 50px 10px;">
       <div class="col-md-4 text-left">
+        <p class="text-faded">Found <%= concerts.length %> concerts nearby</p>
         <ul style="padding-left: 0;">
           <% for concert in concerts %>
             <% if concert.respond_to? :distance %>

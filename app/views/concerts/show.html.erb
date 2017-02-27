@@ -13,6 +13,8 @@
       <% end %>
     </div>
   </div>
+  <small class="text-faded">Click to save this concert. You can check in your <%= link_to "user page", user_concerts_path(current_user) %>.</small>
+
   <div class="pull-right">
     <% if user_is_authorized?(@concert) %>
       <%= link_to edit_user_concert_path(@concert.user, @concert), class: 'btn-sm btn-success' do %>
@@ -27,16 +29,17 @@
 <div class="row" style="border-top: 5px solid #5bc0de;">
   <div class="col-md-8 col-md-offset-2 text-center">
     <h3 class="space-top-sm"><%= @concert.title %></h3>
-    <p><%= link_to @concert.user.username, [@concert.user, @concert.user.profiles.first] %></p>
+    <p><small class="text-faded">Musician - </small> <%= link_to @concert.user.username, [@concert.user, @concert.user.profiles.first] %></p>
     <p class="lead" style="margin-bottom: 10px;"><%= @concert.show_date.strftime("%B %e %Y") %>, <%= @concert.show_time.strftime("%l:%M %P") %></p>
   </div>
 </div>
 <p>
-  <%= link_to @concert.genre.name, @concert.genre, class: 'btn-sm btn-primary' %>
+  <%= link_to @concert.genre.name, @concert.genre, class: 'btn-sm btn-primary', data: {toggle: "tooltip", placement: "top"}, title: "Genre" %>
   <%= render partial: 'tags/list', locals: { tags: @concert.tags } %>
 </p>
 <div class="row space-top-sm">
   <div class="col-md-5">
+    <small class="text-faded">Location Information</small>
     <h4>
       <%= @concert.location_name %>
       <% if url = @concert.location_url %>

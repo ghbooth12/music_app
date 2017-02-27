@@ -10,9 +10,11 @@
       <small><i class="fa fa-bookmark" aria-hidden="true"></i> bookmarks </small>
     </div>
     <% if @profiles.any? %>
+      <p class="text-faded">List of musicians that you saved.</p>
       <%= render 'welcome/musicians', { profiles: @profiles } %>
     <% else %>
       <p>No saved musicians...</p>
+      <p>Click <%= link_to "here", musician_list_path %> to check out musicians.</p>
     <% end %>
   </div> <!-- /.col-md-8 -->
 </div>

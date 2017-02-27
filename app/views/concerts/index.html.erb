@@ -9,9 +9,11 @@
       <small><i class="fa fa-bookmark" aria-hidden="true"></i> bookmarks </small>
     </div>
     <% if @concerts.any? %>
+      <p class="text-faded">List of concerts that you saved.</p>
       <%= render 'welcome/concerts', { concerts: @concerts } %>
     <% else %>
       <p>No saved concerts...</p>
+      <p>Click <%= link_to "here", concert_list_path %> to check out concerts.</p>
     <% end %>
   </div> <!-- /.col-md-8 -->
 </div>
