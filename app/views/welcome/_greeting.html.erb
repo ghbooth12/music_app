@@ -97,8 +97,10 @@
             <ul class="list-group hover-link">
               <li class="list-group-item">
                 <%= link_to new_charge_path do %>
-                  <i class="fa fa-check"></i> Upgrade your membership by paying just $15. You can cancel at any time. (Test User is already a premium level for demonstration. To see this in action, log out and click the button.) <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                  <i class="fa fa-check"></i> Upgrade your membership by paying just $1. The premium membership can be canceled at any time. (<u>Test User is already a premium level for demonstration.</u> To see this in action, log out and click "Premium" on the menu at the top.) <i class="fa fa-external-link-square" aria-hidden="true"></i>
                 <% end %>
+
+                (<u>Currently the site is on test mode, genuine card can't be used. To learn more about test cards, click <a href="https://stripe.com/docs/testing#cards" target="_blank">here</a>.</u>)
               </li>
               <li class="list-group-item">
                 <%= link_to user_songs_path(@tester) do %>
