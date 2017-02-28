@@ -1,6 +1,6 @@
 # Music App
 
-[See it in action](https://music-app-ghbooth12.herokuapp.com/){:target="\_blank"}
+[See it in action](https://music-app-ghbooth12.herokuapp.com/)
 
 Music app is a production quality app that allows users to search local concerts and discover new musicians. Also it allows musicians to post their local concerts and songs to public.
 
@@ -26,5 +26,5 @@ Premium member of musicians can post their songs unlimited. Any tier of members 
 
 **For Premium Musicians**
 
-* Upgrade your membership by paying just $1.(Currently the site is on test mode, genuine card can't be used. To learn more about test cards, click <a href="https://stripe.com/docs/testing#cards" target="_blank">here</a>.) The premium membership can be canceled at any time.
+* Upgrade your membership by paying just $1.(Currently the site is on test mode, genuine card can't be used. To learn more about test cards, click [here](https://stripe.com/docs/testing#cards).) The premium membership can be canceled at any time.
 * List multiple songs in the profile. Songs are all linked from SoundCloud.
