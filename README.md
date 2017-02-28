@@ -26,5 +26,5 @@ Premium member of musicians can post their songs unlimited. Any tier of members 
 
 **For Premium Musicians**
 
-* Upgrade your membership by paying just $1.(Currently the site is on test mode, genuine card can't be used. To learn more about test cards, click [here](https://stripe.com/docs/testing#cards){:target="\_blank"}.) The premium membership can be canceled at any time.
+* Upgrade your membership by paying just $1.(Currently the site is on test mode, genuine card can't be used. To learn more about test cards, click <a href="https://stripe.com/docs/testing#cards" target="_blank">here</a>.) The premium membership can be canceled at any time.
 * List multiple songs in the profile. Songs are all linked from SoundCloud.
